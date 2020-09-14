@@ -1,0 +1,20 @@
+@include touch {
+    .desktop-only {
+        display: none;
+    }
+}
+
+.navbar-item {
+    height: 100%;
+}
+
+.has-shadow {
+    border: none;
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.1);
+    transition: 0.2s ease;
+}
+
+.has-shadow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25);
+}

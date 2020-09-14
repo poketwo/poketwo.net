@@ -1,0 +1,11 @@
+.banner {
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .featurebox {
+        margin-left: -20rem;
+    }
+}
