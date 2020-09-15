@@ -2,12 +2,12 @@
     .feature {
         z-index: 1;
     }
-    .features :global(.container):nth-child(even) :global(.columns) {
+    .features :global(.section):nth-child(odd) :global(.columns) {
         .feature {
             margin-left: -20rem;
         }
     }
-    .features :global(.container):nth-child(odd) :global(.columns) {
+    .features :global(.section):nth-child(even) :global(.columns) {
         flex-direction: row-reverse;
 
         .feature {
