@@ -5,7 +5,19 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .featurebox {
-        margin-left: -20rem;
+    .feature {
+        z-index: 1;
+    }
+    .features :global(.container):nth-child(even) :global(.columns) {
+        .feature {
+            margin-left: -20rem;
+        }
+    }
+    .features :global(.container):nth-child(odd) :global(.columns) {
+        flex-direction: row-reverse;
+
+        .feature {
+            margin-right: -20rem;
+        }
     }
 }
