@@ -9,6 +9,7 @@ const Banner = () => (
         <div className="container">
             <div className="columns">
                 <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
+                    <img src={require("../assets/logo.png")} width="200" />
                     <p className="title is-1 is-spaced">
                         The Pokémon experience.
                         <br />
@@ -37,7 +38,7 @@ const Banner = () => (
                             <span className="icon">
                                 <FontAwesomeIcon icon={faDiscord} />
                             </span>
-                            <span>Join Server</span>
+                            <span>Join Official Server</span>
                         </a>
                     </div>
                 </div>
