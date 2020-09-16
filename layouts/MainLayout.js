@@ -20,7 +20,14 @@ const MainLayout = ({ children }) => {
                 <Navbar.Item href="/commands">Commands</Navbar.Item>
                 <Navbar.Item href="/team">Team</Navbar.Item>
                 <Navbar.Item href="/store">Store</Navbar.Item>
-                <Navbar.Item href="/contact">Add Pokétwo</Navbar.Item>
+                <Navbar.Item>
+                    <a
+                        href="https://invite.poketwo.net/"
+                        className="button has-shadow is-light is-rounded"
+                    >
+                        Add Pokétwo
+                    </a>
+                </Navbar.Item>
             </Navbar>
 
             {children}

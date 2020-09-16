@@ -2,16 +2,26 @@
     .feature {
         z-index: 1;
     }
-    .features :global(.section):nth-child(odd) :global(.columns) {
+    .features .feature-wrapper:nth-child(odd) :global(.columns) {
         .feature {
             margin-left: -20rem;
         }
     }
-    .features :global(.section):nth-child(even) :global(.columns) {
+    .features .feature-wrapper:nth-child(even) :global(.columns) {
         flex-direction: row-reverse;
 
         .feature {
             margin-right: -20rem;
         }
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .feature-wrapper {
+        padding-top: 1.5rem;
+        padding-bottom: 0;
+    }
+    .extra-features {
+        padding-top: 1.5rem;
     }
 }
