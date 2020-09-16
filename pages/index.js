@@ -38,7 +38,8 @@ const Banner = () => (
                         Pokétwo brings the Pokémon experience to Discord. Catch
                         randomly-spawning pokémon in your servers, trade them to
                         expand your collection, battle with your friends to win
-                        rewards, and more!
+                        rewards, and more. Best of all, it's completely open
+                        source.
                     </p>
                     <div className="buttons is-centered">
                         <a
