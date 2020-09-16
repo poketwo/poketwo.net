@@ -20,6 +20,12 @@ const MainLayout = ({ children }) => {
                 <Navbar.Item href="/commands">Commands</Navbar.Item>
                 <Navbar.Item href="/team">Team</Navbar.Item>
                 <Navbar.Item href="/store">Store</Navbar.Item>
+                <a
+                    className="navbar-item"
+                    href="https://github.com/oliver-ni/poketwo"
+                >
+                    GitHub
+                </a>
                 <Navbar.Item>
                     <a
                         href="https://invite.poketwo.net/"
