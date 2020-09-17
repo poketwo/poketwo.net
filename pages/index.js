@@ -3,16 +3,12 @@ import {
     faCloudMoon,
     faCode,
     faFilter,
-    faGrinStars,
-    faHandSparkles,
-    faInfo,
     faInfoCircle,
     faList,
     faPaw,
     faRandom,
     faRobot,
     faStar,
-    faTrophy,
     faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -93,9 +89,11 @@ const RichFeature = ({ filename, title, children }) => (
 );
 
 const Feature = ({ icon, children }) => (
-    <div className="tile is-child box has-shadow has-text-centered">
-        {icon && <FontAwesomeIcon icon={icon} size="2x" className="mb-4" />}
-        <p className="title is-4">{children}</p>
+    <div className="column is-3-desktop is-4-tablet is-6-mobile">
+        <div className="box has-background-link-dark has-shadow has-text-centered h-100">
+            {icon && <FontAwesomeIcon icon={icon} size="2x" className="mb-4" />}
+            <p className="title is-4">{children}</p>
+        </div>
     </div>
 );
 
@@ -153,33 +151,20 @@ const Features = () => (
         <div className={classNames("section", styles["extra-features"])}>
             <div className="container">
                 <div className="columns">
-                    <div className="column is-8-widescreen is-offset-2-widescreen">
-                        <div className="tile is-ancestor">
-                            <div className="tile is-vertical is-parent">
-                                <Feature icon={faStar}>Shiny Pokémon</Feature>
-                                <Feature icon={faFilter}>
-                                    Powerful Filters
-                                </Feature>
-                                <Feature icon={faCloudMoon}>
-                                    Time &amp; Weather
-                                </Feature>
-                            </div>
-                            <div className="tile is-vertical is-parent">
-                                <Feature icon={faCode}>Open Source</Feature>
-                                <Feature icon={faUsers}>
-                                    Large Community
-                                </Feature>
-                                <Feature icon={faInfoCircle}>
-                                    Excellent Support
-                                </Feature>
-                            </div>
-                            <div className="tile is-vertical is-parent">
-                                <Feature icon={faRandom}>
-                                    Mega Evolutions
-                                </Feature>
-                                <Feature icon={faPaw}>Form Changes</Feature>
-                                <Feature icon={faList}>And more...</Feature>
-                            </div>
+                    <div className="column is-10-widescreen is-offset-1-widescreen">
+                        <div className="columns is-multiline is-mobile is-centered">
+                            <Feature icon={faFilter}>Powerful Filters</Feature>
+                            <Feature icon={faCloudMoon}>
+                                Time &amp; Weather
+                            </Feature>
+                            <Feature icon={faStar}>Shiny Hunting</Feature>
+                            <Feature icon={faPaw}>Form Changes</Feature>
+                            <Feature icon={faUsers}>Large Community</Feature>
+                            <Feature icon={faInfoCircle}>
+                                Excellent Support
+                            </Feature>
+                            <Feature icon={faCode}>Open Source</Feature>
+                            <Feature icon={faList}>And more...</Feature>
                         </div>
                     </div>
                 </div>
