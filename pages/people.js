@@ -18,12 +18,7 @@ const TeamMember = ({ name, tagline, image, small = false }) => (
             "is-4-tablet is-3-desktop is-3-widescreen": small,
         })}
     >
-        <div
-            className={classNames({
-                "box has-shadow has-text-centered h-100": true,
-                "py-5": !small,
-            })}
-        >
+        <div className="box has-shadow has-text-centered h-100">
             {image && (
                 <figure className="image is-96x96 mb-5 mx-auto">
                     <NoSSR>
@@ -35,9 +30,7 @@ const TeamMember = ({ name, tagline, image, small = false }) => (
                 </figure>
             )}
             {name && <p className="title is-5">{name}</p>}
-            {tagline && (
-                <p className="subtitle has-text-grey is-6">{tagline}</p>
-            )}
+            {tagline && <p className="subtitle has-text-grey is-6">{tagline}</p>}
         </div>
     </div>
 );
@@ -51,9 +44,7 @@ const Section = ({ title, members, small = false }) => {
     const Wrapper = small
         ? ({ children }) => (
               <div className="columns">
-                  <div className="column is-10-widescreen is-offset-1-widescreen">
-                      {children}
-                  </div>
+                  <div className="column is-10-widescreen is-offset-1-widescreen">{children}</div>
               </div>
           )
         : React.Fragment;
@@ -63,7 +54,7 @@ const Section = ({ title, members, small = false }) => {
                 <Wrapper>
                     <p className="title has-text-centered mb-6">{title}</p>
                     <div className="columns is-multiline is-centered">
-                        {randomized.map((x) => (
+                        {randomized.map(x => (
                             <TeamMember {...x} key={x.name} small={small} />
                         ))}
                     </div>
@@ -91,7 +82,7 @@ export async function getStaticProps(context) {
         props: {
             developers: [
                 {
-                    name: "olidip#0001",
+                    name: "Oliver#0001",
                     image: "olidip.png",
                     tagline: "hello world",
                 },
@@ -117,8 +108,7 @@ export async function getStaticProps(context) {
                 {
                     name: "Hyperbub#9000",
                     image: "hyper.png",
-                    tagline:
-                        "Your casual fate degenerate who also likes sheep.",
+                    tagline: "Your casual fate degenerate who also likes sheep.",
                 },
                 {
                     name: "Haltfire302#9839",
@@ -160,8 +150,7 @@ export async function getStaticProps(context) {
                 {
                     name: "ℍ𝕒𝕣𝕧#0850",
                     image: "harv.png",
-                    tagline:
-                        "People? They come and they leave, but what remains is this night sky",
+                    tagline: "People? They come and they leave, but what remains is this night sky",
                 },
                 {
                     name: "MemeBoiFBCB#0001",
@@ -224,10 +213,6 @@ export async function getStaticProps(context) {
                 },
                 {
                     name: "HiroWilde#0359",
-                    tagline: "Art",
-                },
-                {
-                    name: "r0sh#3237",
                     tagline: "Art",
                 },
                 {

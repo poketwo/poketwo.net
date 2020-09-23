@@ -10,13 +10,13 @@
 
 .has-shadow {
     border: none;
-    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.3), 0 0px 0 1px rgba(10, 10, 10, 0.1);
     transition: 0.2s ease;
 }
 
 .has-shadow:hover {
     transform: translateY(-3px);
-    box-shadow: 0 30px 60px -12px rgba(50, 50, 50, 0.25);
+    box-shadow: 0 1em 1em -0.125em rgba(10, 10, 10, 0.15), 0 0px 0 1px rgba(10, 10, 10, 0.05);
 }
 
 .mx-auto {

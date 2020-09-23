@@ -17,7 +17,7 @@ const MainLayout = ({ children }) => {
                 }
             >
                 <Navbar.Item href="/">Home</Navbar.Item>
-                <Navbar.Item href="/commands">Commands</Navbar.Item>
+                {/* <Navbar.Item href="/commands">Commands</Navbar.Item> */}
                 <Navbar.Item href="/people">People</Navbar.Item>
                 <Navbar.Item href="/store">Store</Navbar.Item>
                 <a

@@ -12,7 +12,7 @@ const NavbarItem = ({ href, children, active, className, tag, ...props }) => {
             <Tag
                 className={classNames({
                     "navbar-item": true,
-                    "is-active": active ?? router.pathname == href,
+                    "is-active": active ?? router.pathname === href,
                     [className]: !!className,
                 })}
                 {...props}
