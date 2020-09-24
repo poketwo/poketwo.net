@@ -53,7 +53,7 @@ const Items = ({ items, onCheckout }) => {
                 <div className="container has-text-centered">
                     <button
                         className="button is-link is-medium is-rounded has-shadow"
-                        onClick={onCheckout}
+                        onClick={() => onCheckout(items[selected])}
                         disabled={selected === -1}
                     >
                         Checkout{selected !== -1 && <> (${items[selected].price})</>}
@@ -64,7 +64,7 @@ const Items = ({ items, onCheckout }) => {
     );
 };
 
-const Authentication = ({ user, handleCheckout }) => {
+const Authentication = ({ user }) => {
     const authenticated = user !== null;
     return (
         <div className="section">
@@ -104,7 +104,7 @@ const Authentication = ({ user, handleCheckout }) => {
 };
 
 const Store = ({ user, items }) => {
-    const handleCheckout = async event => {
+    const handleCheckout = async item => {
         const stripe = await stripePromise;
 
         const response = await fetch("/api/checkout", {
@@ -113,7 +113,7 @@ const Store = ({ user, items }) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                amount: 5,
+                amount: item.price,
                 user,
             }),
         });
