@@ -13,7 +13,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { Parallax, ParallaxProvider } from "react-scroll-parallax";
+import SVG from "react-inlinesvg";
+import { Parallax, ParallaxProvider, useController } from "react-scroll-parallax";
 import styles from "../styles/index.module.scss";
 
 const Banner = () => (
@@ -64,38 +65,43 @@ const Banner = () => (
     </div>
 );
 
-const RichFeature = ({ filename, title, children }) => (
-    <div className={classNames("section", styles["feature-wrapper"])}>
-        <div className="container">
-            <div className="columns is-desktop">
-                <div className="column is-10-desktop desktop-only">
-                    <Parallax y={[-10, 10]}>
-                        <object
-                            type="image/svg+xml"
-                            data={require(`../assets/mockups/${filename}.svg`)}
-                            className="catching"
-                            alt={title}
-                        >
-                            <picture>
-                                <source srcSet={require(`../assets/mockups/${filename}.png?webp`)} type="image/webp" />
-                                <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
-                                <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
-                            </picture>
-                        </object>
-                    </Parallax>
-                </div>
-                <div className={classNames("column", styles.feature)}>
-                    <Parallax y={[-2, 2]}>
-                        <div className="box has-background-link-dark">
-                            <p className="title is-4">{title}</p>
-                            <div className="content">{children}</div>
-                        </div>
-                    </Parallax>
+const RichFeature = ({ filename, title, children }) => {
+    const controller = typeof window === "undefined" ? {} : useController().parallaxController;
+    return (
+        <div className={classNames("section", styles["feature-wrapper"])}>
+            <div className="container">
+                <div className="columns is-desktop">
+                    <div className="column is-10-desktop desktop-only">
+                        <Parallax y={[-10, 10]}>
+                            <SVG
+                                src={require(`../assets/mockups/${filename}.svg`)}
+                                onLoad={controller.update}
+                                uniquifyIDs
+                            >
+                                <picture>
+                                    <source
+                                        srcSet={require(`../assets/mockups/${filename}.png?webp`)}
+                                        type="image/webp"
+                                    />
+                                    <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
+                                    <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
+                                </picture>
+                            </SVG>
+                        </Parallax>
+                    </div>
+                    <div className={classNames("column", styles.feature)}>
+                        <Parallax y={[-2, 2]}>
+                            <div className="box has-background-link-dark">
+                                <p className="title is-4">{title}</p>
+                                <div className="content">{children}</div>
+                            </div>
+                        </Parallax>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 const Feature = ({ icon, children }) => (
     <div className="column is-3-desktop is-4-tablet is-6-mobile">

@@ -26,6 +26,7 @@
         "nprogress": "^0.2.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
+        "react-inlinesvg": "^2.1.0",
         "react-no-ssr": "^1.1.0",
         "react-scroll-parallax": "^2.3.4",
         "responsive-loader": "^2.1.1",
