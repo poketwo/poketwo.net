@@ -4,13 +4,19 @@
     }
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .navbar-item {
     height: 100%;
 }
 
 .has-shadow {
     border: none;
-    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.3), 0 0px 0 1px rgba(10, 10, 10, 0.1);
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.2), 0 0px 0 1px rgba(10, 10, 10, 0.1);
     transition: 0.2s ease;
 }
 
@@ -24,6 +30,17 @@
     margin-right: auto;
 }
 
+@include mobile {
+    .mx-auto-mobile {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 .h-100 {
     height: 100%;
+}
+
+a.is-unstyled {
+    color: inherit;
 }

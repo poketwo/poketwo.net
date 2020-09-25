@@ -1,12 +1,12 @@
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import {
+    faArrowRight,
     faCloudMoon,
     faCode,
     faFilter,
     faInfoCircle,
     faList,
     faPaw,
-    faRandom,
     faRobot,
     faStar,
     faUsers,
@@ -20,27 +20,19 @@ const Banner = () => (
         <div className="container">
             <div className="columns">
                 <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
-                    <img
-                        src={require("../assets/logo.png")}
-                        className="has-drop-shadow"
-                        width="200"
-                    />
+                    <img src={require("../assets/logo.png")} className="has-drop-shadow" width="200" />
                     <p className="title is-1 is-spaced">
                         The Pokémon experience.
                         <br />
                         On Discord.
                     </p>
                     <p className="subtitle is-4">
-                        Pokétwo brings the Pokémon experience to Discord. Catch
-                        randomly-spawning pokémon in your servers, trade them to
-                        expand your collection, battle with your friends to win
-                        rewards, and more. All free to play and open source.
+                        Pokétwo brings the Pokémon experience to Discord. Catch randomly-spawning pokémon in your
+                        servers, trade them to expand your collection, battle with your friends to win rewards, and
+                        more. All free to play and open source.
                     </p>
                     <div className="buttons is-centered">
-                        <a
-                            className="button is-medium is-link is-rounded has-shadow"
-                            href="https://invite.poketwo.net"
-                        >
+                        <a className="button is-medium is-link is-rounded has-shadow" href="https://invite.poketwo.net">
                             <span className="icon">
                                 <FontAwesomeIcon icon={faRobot} />
                             </span>
@@ -72,9 +64,7 @@ const RichFeature = ({ filename, title, children }) => (
                         data={require(`../assets/mockups/${filename}.svg`)}
                         className="catching"
                     >
-                        <img
-                            src={require(`../assets/mockups/${filename}.png`)}
-                        />
+                        <img src={require(`../assets/mockups/${filename}.png`)} />
                     </object>
                 </div>
                 <div className={classNames("column", styles.feature)}>
@@ -103,48 +93,39 @@ const Features = () => (
             <p className="title is-2 has-text-centered">Features</p>
         </div>
         <div className={styles.features}>
-            <RichFeature
-                filename="catching_dark"
-                title="Catch &amp; Collect Pokémon"
-            >
+            <RichFeature filename="catching_dark" title="Catch &amp; Collect Pokémon">
                 <p>
-                    As you talk in your server, pokémon will randomly appear.
-                    Compete with other server members to be the fastest to catch
-                    it!
+                    As you talk in your server, pokémon will randomly appear. Compete with other server members to be
+                    the fastest to catch it!
                 </p>
                 <p>
-                    Keep catching to increase the size of your collection and
-                    work toward completing the Pokédex. Catch rare mythical and
-                    legendary pokémon so you can brag to your friends!
+                    Keep catching to increase the size of your collection and work toward completing the Pokédex. Catch
+                    rare mythical and legendary pokémon so you can brag to your friends!
                 </p>
                 <p className="is-size-7 desktop-only">
-                    (Fun fact: The pokémon on this image is random! Reload the
-                    page to get a new one.)
+                    (Fun fact: The pokémon on this image is random! Reload the page to get a new one.)
                 </p>
             </RichFeature>
 
-            <RichFeature
-                filename="market_dark"
-                title="Trade &amp; Sell Pokémon"
-            >
+            <RichFeature filename="market_dark" title="Trade &amp; Sell Pokémon">
                 <p>
-                    Really want a rare pokémon? Looking to add to your personal
-                    collection? Trade with other players anywhere, anytime!
+                    Really want a rare pokémon? Looking to add to your personal collection? Trade with other players
+                    anywhere, anytime!
                 </p>
                 <p>
-                    You can also buy and sell on the global marketplace, where a
-                    wide variety of Pokémon are regularly added.
+                    You can also buy and sell on the global marketplace, where a wide variety of Pokémon are regularly
+                    added.
                 </p>
             </RichFeature>
 
             <RichFeature filename="battle_dark" title="Battle with Pokémon">
                 <p>
-                    Gather your three most powerful pokémon and challenge fellow
-                    trainers in a battle of skill and strategy.
+                    Gather your three most powerful pokémon and challenge fellow trainers in a battle of skill and
+                    strategy.
                 </p>
                 <p>
-                    The bot supports 3v3 pokémon duels using moves from the real
-                    Pokémon games, complete with fancy, customizable images.
+                    The bot supports 3v3 pokémon duels using moves from the real Pokémon games, complete with fancy,
+                    customizable images.
                 </p>
             </RichFeature>
         </div>
@@ -154,15 +135,11 @@ const Features = () => (
                     <div className="column is-10-widescreen is-offset-1-widescreen">
                         <div className="columns is-multiline is-mobile is-centered">
                             <Feature icon={faFilter}>Powerful Filters</Feature>
-                            <Feature icon={faCloudMoon}>
-                                Time &amp; Weather
-                            </Feature>
+                            <Feature icon={faCloudMoon}>Time &amp; Weather</Feature>
                             <Feature icon={faStar}>Shiny Hunting</Feature>
                             <Feature icon={faPaw}>Form Changes</Feature>
                             <Feature icon={faUsers}>Large Community</Feature>
-                            <Feature icon={faInfoCircle}>
-                                Excellent Support
-                            </Feature>
+                            <Feature icon={faInfoCircle}>Excellent Support</Feature>
                             <Feature icon={faCode}>Open Source</Feature>
                             <Feature icon={faList}>And more...</Feature>
                         </div>
@@ -173,10 +150,25 @@ const Features = () => (
     </>
 );
 
+const CTA = () => (
+    <div className="section">
+        <div className="container has-text-centered">
+            <p className="title is-2">Ready to begin your adventure?</p>
+            <a className="button is-large is-link is-rounded has-shadow" href="https://discord.gg/poketwo">
+                <span>Get Started</span>
+                <span className="icon">
+                    <FontAwesomeIcon icon={faArrowRight} />
+                </span>
+            </a>
+        </div>
+    </div>
+);
+
 const Index = () => (
     <>
         <Banner />
         <Features />
+        <CTA />
     </>
 );
 
