@@ -105,7 +105,7 @@ const RichFeature = ({ filename, title, children }) => {
 
 const Feature = ({ icon, children }) => (
     <div className="column is-3-desktop is-4-tablet is-6-mobile">
-        <div className="box has-background-link-dark has-shadow has-text-centered h-100">
+        <div className="box has-background-link-dark has-text-centered h-100">
             {icon && <FontAwesomeIcon icon={icon} size="2x" className="mb-4" />}
             <p className="title is-4">{children}</p>
         </div>
