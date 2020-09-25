@@ -145,6 +145,11 @@ export async function getStaticProps(context) {
                     image: "josh.jpg",
                     tagline: "Gib food",
                 },
+                {
+                    name: "Leviquackerman#1611",
+                    image: "levi.png",
+                    tagline: "Sylveon queen.",
+                },
             ],
             support: [
                 {
