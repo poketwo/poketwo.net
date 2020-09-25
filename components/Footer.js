@@ -36,16 +36,16 @@ const Footer = () => (
                 </picture>
             </figure>
             <p className="title is-4">
-                <a href="https://discord.gg/poketwo" className="is-unstyled mr-5">
+                <a href="https://discord.gg/poketwo" className="is-unstyled mr-5" aria-label="Discord">
                     <FontAwesomeIcon icon={faDiscord} />
                 </a>
-                <a href="https://twitter.com/PoketwoBot" className="is-unstyled mr-5">
+                <a href="https://twitter.com/PoketwoBot" className="is-unstyled mr-5" aria-label="Twitter">
                     <FontAwesomeIcon icon={faTwitter} />
                 </a>
-                <a href="https://www.reddit.com/r/poketwo/" className="is-unstyled mr-5">
+                <a href="https://www.reddit.com/r/poketwo/" className="is-unstyled mr-5" aria-label="Reddit">
                     <FontAwesomeIcon icon={faReddit} />
                 </a>
-                <a href="mailto:support@poketwo.net" className="is-unstyled">
+                <a href="mailto:support@poketwo.net" className="is-unstyled" aria-label="Email">
                     <FontAwesomeIcon icon={faEnvelope} />
                 </a>
             </p>
