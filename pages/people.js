@@ -150,6 +150,11 @@ export async function getStaticProps(context) {
                     image: "levi.png",
                     tagline: "Sylveon queen.",
                 },
+                {
+                    name: "Anoea#3441",
+                    image: "anoea.jpg",
+                    tagline: "Kindness inspires beauty in all",
+                },
             ],
             support: [
                 {
@@ -166,11 +171,6 @@ export async function getStaticProps(context) {
                     name: "MemeBoiFBCB#0001",
                     image: "fbcb.png",
                     tagline: "Gimme your delibirbs",
-                },
-                {
-                    name: "Anoea#3441",
-                    image: "anoea.jpg",
-                    tagline: "Kindness inspires beauty in all",
                 },
                 {
                     name: "Kamijouとうま#0210",
