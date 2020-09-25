@@ -20,7 +20,16 @@ const Banner = () => (
         <div className="container">
             <div className="columns">
                 <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
-                    <img src={require("../assets/logo.png")} className="has-drop-shadow" width="200" />
+                    <picture>
+                        <source srcSet={require("../assets/logo.png?webp")} type="image/webp" />
+                        <source srcSet={require("../assets/logo.png")} type="image/png" />
+                        <img
+                            src={require("../assets/logo.png")}
+                            className="has-drop-shadow"
+                            width="200"
+                            alt="Pokétwo Logo"
+                        />
+                    </picture>
                     <p className="title is-1 is-spaced">
                         The Pokémon experience.
                         <br />
@@ -63,8 +72,13 @@ const RichFeature = ({ filename, title, children }) => (
                         type="image/svg+xml"
                         data={require(`../assets/mockups/${filename}.svg`)}
                         className="catching"
+                        alt={title}
                     >
-                        <img src={require(`../assets/mockups/${filename}.png`)} />
+                        <picture>
+                            <source srcSet={require(`../assets/mockups/${filename}.png?webp`)} type="image/webp" />
+                            <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
+                            <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
+                        </picture>
                     </object>
                 </div>
                 <div className={classNames("column", styles.feature)}>

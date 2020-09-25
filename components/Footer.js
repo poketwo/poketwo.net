@@ -29,7 +29,11 @@ const Footer = () => (
             {/* <div className="columns"> */}
             {/* <div className="column is-5-widescreen is-offset-1-widescreen"> */}
             <figure className="image is-96x96 mb-5 mx-auto">
-                <img src={require("../assets/logo.png")} />
+                <picture>
+                    <source srcSet={require("../assets/logo.png?webp")} type="image/webp" />
+                    <source srcSet={require("../assets/logo.png")} type="image/png" />
+                    <img src={require("../assets/logo.png")} alt="Pokétwo Logo" />
+                </picture>
             </figure>
             <p className="title is-4">
                 <a href="https://discord.gg/poketwo" className="is-unstyled mr-5">

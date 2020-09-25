@@ -22,10 +22,15 @@ const TeamMember = ({ name, tagline, image, small = false }) => (
             {image && (
                 <figure className="image is-96x96 mb-5 mx-auto">
                     <NoSSR>
-                        <img
-                            className="profile-circle is-rounded"
-                            src={require(`../assets/team/${image}?resize&size=300`)}
-                        />
+                        <picture>
+                            <source srcSet={require(`../assets/team/${image}?webp`)} type="image/webp" />
+                            <source srcSet={require(`../assets/team/${image}`)} type="image/png" />
+                            <img
+                                className="profile-circle is-rounded"
+                                src={require(`../assets/team/${image}`)}
+                                alt={name}
+                            />
+                        </picture>
                     </NoSSR>
                 </figure>
             )}

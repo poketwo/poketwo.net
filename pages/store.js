@@ -84,6 +84,7 @@ const Authentication = ({ user }) => {
                                         <img
                                             className="profile-circle is-rounded"
                                             src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`}
+                                            alt="Profile Picture"
                                         />
                                     </figure>
                                     <p className="title is-4">
