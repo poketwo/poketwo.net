@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
+import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 import styles from "../styles/index.module.scss";
 
 const Banner = () => (
@@ -68,24 +69,28 @@ const RichFeature = ({ filename, title, children }) => (
         <div className="container">
             <div className="columns is-desktop">
                 <div className="column is-10-desktop desktop-only">
-                    <object
-                        type="image/svg+xml"
-                        data={require(`../assets/mockups/${filename}.svg`)}
-                        className="catching"
-                        alt={title}
-                    >
-                        <picture>
-                            <source srcSet={require(`../assets/mockups/${filename}.png?webp`)} type="image/webp" />
-                            <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
-                            <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
-                        </picture>
-                    </object>
+                    <Parallax y={[-10, 10]}>
+                        <object
+                            type="image/svg+xml"
+                            data={require(`../assets/mockups/${filename}.svg`)}
+                            className="catching"
+                            alt={title}
+                        >
+                            <picture>
+                                <source srcSet={require(`../assets/mockups/${filename}.png?webp`)} type="image/webp" />
+                                <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
+                                <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
+                            </picture>
+                        </object>
+                    </Parallax>
                 </div>
                 <div className={classNames("column", styles.feature)}>
-                    <div className="box has-background-link-dark">
-                        <p className="title is-4">{title}</p>
-                        <div className="content">{children}</div>
-                    </div>
+                    <Parallax y={[-2, 2]}>
+                        <div className="box has-background-link-dark">
+                            <p className="title is-4">{title}</p>
+                            <div className="content">{children}</div>
+                        </div>
+                    </Parallax>
                 </div>
             </div>
         </div>
@@ -180,9 +185,11 @@ const CTA = () => (
 
 const Index = () => (
     <>
-        <Banner />
-        <Features />
-        <CTA />
+        <ParallaxProvider>
+            <Banner />
+            <Features />
+            <CTA />
+        </ParallaxProvider>
     </>
 );
 
