@@ -176,15 +176,17 @@ const Features = () => (
 );
 
 const CTA = () => (
-    <div className="section">
-        <div className="container has-text-centered">
-            <p className="title is-2">Ready to begin your adventure?</p>
-            <a className="button is-large is-link is-rounded has-shadow" href="https://discord.gg/poketwo">
-                <span>Get Started</span>
-                <span className="icon">
-                    <FontAwesomeIcon icon={faArrowRight} />
-                </span>
-            </a>
+    <div className="hero is-large is-transparent">
+        <div className="hero-body">
+            <div className="container has-text-centered">
+                <p className="title is-2">Ready to begin your adventure?</p>
+                <a className="button is-large is-link is-rounded has-shadow" href="https://discord.gg/poketwo">
+                    <span>Get Started</span>
+                    <span className="icon">
+                        <FontAwesomeIcon icon={faArrowRight} />
+                    </span>
+                </a>
+            </div>
         </div>
     </div>
 );
