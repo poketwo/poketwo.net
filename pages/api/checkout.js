@@ -2,12 +2,21 @@ import Stripe from "stripe";
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
-const prices = {
+const test_prices = {
+    5: "price_1HUMZhL49CplPi5yRUm7zcQg",
+    10: "price_1HUMZtL49CplPi5yqY1uZhNq",
+    20: "price_1HUMa8L49CplPi5yOZfAvYR3",
+    40: "price_1HUMaKL49CplPi5yhEkvrg83",
+};
+
+const live_prices = {
     5: "price_1HWYyLL49CplPi5yW32V7zf8",
     10: "price_1HWYyJL49CplPi5yrhmNrWMk",
     20: "price_1HWYyGL49CplPi5yW5y44i1v",
     40: "price_1HWYy7L49CplPi5ylvpVR9D0",
 };
+
+const prices = process.env.BASE_URL.includes("localhost") ? test_prices : live_prices;
 
 export default async (req, res) => {
     if (req.method === "POST") {
