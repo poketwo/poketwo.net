@@ -66,6 +66,11 @@ const Items = ({ items, onCheckout }) => {
 
 const Authentication = ({ user }) => {
     const authenticated = user !== null;
+    let file_ext, avatar_url;
+    if (authenticated) {
+        file_ext = user.avatar.startsWith("a_") ? "gif" : "png";
+        avatar_url = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${file_ext}`;
+    }
     return (
         <div className="section">
             <div className="container has-text-centered">
@@ -82,7 +87,7 @@ const Authentication = ({ user }) => {
                                     <figure className="image is-96x96 mb-5 mx-auto">
                                         <img
                                             className="profile-circle is-rounded"
-                                            src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`}
+                                            src={avatar_url}
                                             alt="Profile Picture"
                                         />
                                     </figure>
