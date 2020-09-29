@@ -11,7 +11,6 @@ const Banner = () => (
     <div className="section">
         <div className="container has-text-centered">
             <p className="title is-2">Store</p>
-            <p className="subtitle is-4">Coming Soon</p>
         </div>
     </div>
 );
@@ -134,8 +133,8 @@ const Store = ({ user, items }) => {
     return (
         <>
             <Banner />
-            {/* <Authentication user={user} />
-            <Items items={items} onCheckout={handleCheckout} /> */}
+            <Authentication user={user} />
+            <Items items={items} onCheckout={handleCheckout} />
         </>
     );
 };
