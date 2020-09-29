@@ -148,8 +148,8 @@ export const getServerSideProps = withSession(async ({ req }) => {
             items: [
                 { name: "500 Shards", price: 5 },
                 { name: "1100 Shards", price: 10 },
-                { name: "2420 Shards", price: 20 },
-                { name: "5324 Shards", price: 40 },
+                { name: "2400 Shards", price: 20 },
+                { name: "5600 Shards", price: 40 },
             ],
         },
     };
