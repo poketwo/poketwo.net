@@ -72,11 +72,11 @@ const Section = ({ title, members, small = false }) => {
 const Team = ({ developers, admins, moderators, support, other }) => (
     <>
         <Banner />
-        <Section title="Developers" members={developers} />
-        <Section title="Admins" members={admins} />
-        <Section title="Server Moderators" members={moderators} />
-        <Section title="Server Support" members={support} />
-        <Section title="Significant Contributors" members={other} small />
+        <Section title="Development" members={developers} />
+        <Section title="Administration" members={admins} />
+        <Section title="Moderation" members={moderators} />
+        <Section title="Support" members={support} />
+        <Section title="Other Significant Contributors" members={other} small />
     </>
 );
 
@@ -206,6 +206,11 @@ export async function getStaticProps(context) {
                     name: "ĪĐontĞiveÅFøx#9049",
                     image: "fox.png",
                     tagline: "Just a fox 🦊",
+                },
+                {
+                    name: "amie#1273",
+                    image: "amie.png",
+                    tagline: "hiro drew this :qwq:",
                 },
             ],
             other: [
