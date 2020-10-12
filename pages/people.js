@@ -195,7 +195,7 @@ export async function getStaticProps(context) {
                 {
                     name: "HiroWilde#0359",
                     image: "hiro.png",
-                    tagline: "Stars cannot shine without darkness uwu",
+                    tagline: "Simpulsive uwu",
                 },
                 {
                     name: "JellyGreen#5506",
