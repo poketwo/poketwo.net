@@ -68,8 +68,12 @@ const Authentication = ({ user }) => {
     const authenticated = user !== null;
     let file_ext, avatar_url;
     if (authenticated) {
-        file_ext = user.avatar.startsWith("a_") ? "gif" : "png";
-        avatar_url = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${file_ext}`;
+        if (user.avatar) {
+            file_ext = user.avatar.startsWith("a_") ? "gif" : "png";
+            avatar_url = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${file_ext}`;
+        } else {
+            avatar_url = `https://cdn.discordapp.com/embed/avatars/${user.id % 5}.png`;
+        }
     }
     return (
         <div className="section">
