@@ -126,11 +126,6 @@ export async function getStaticProps(context) {
                     tagline: "probably sleeping",
                 },
                 {
-                    name: "Crunchy#1123",
-                    image: "crunchy.jpg",
-                    tagline: "Lf shinies",
-                },
-                {
                     name: "Alkinus#3747",
                     image: "alki.png",
                     tagline: "Ultimate Cutiefly Maniac. <33",
