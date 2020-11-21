@@ -29,8 +29,9 @@ const Item = ({ name, price, selected, onSelect }) => (
     </div>
 );
 
-const Items = ({ items, onCheckout }) => {
+const Items = ({ user, items, onCheckout }) => {
     const [selected, setSelected] = useState(-1);
+    const authenticated = user !== null;
 
     return (
         <>
@@ -54,7 +55,7 @@ const Items = ({ items, onCheckout }) => {
                     <button
                         className="button is-link is-medium is-rounded has-shadow"
                         onClick={() => onCheckout(items[selected])}
-                        disabled={selected === -1}
+                        disabled={!authenticated || selected === -1}
                     >
                         Checkout{selected !== -1 && <> (${items[selected].price})</>}
                     </button>
@@ -143,7 +144,7 @@ const Store = ({ user, items }) => {
         <>
             <Banner />
             <Authentication user={user} />
-            <Items items={items} onCheckout={handleCheckout} />
+            <Items user={user} items={items} onCheckout={handleCheckout} />
         </>
     );
 };

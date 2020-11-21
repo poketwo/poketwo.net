@@ -26,6 +26,18 @@ export default async (req, res) => {
             res.status(400).end();
         }
 
+        const customers = await stripe.customers.list({
+            email: user.email,
+            limit: 1,
+        });
+
+        const customer = {};
+        if (customers["data"].length === 0) {
+            customer["customer_email"] = user.email;
+        } else {
+            customer["customer"] = customers["data"][0].id;
+        }
+
         const session = await stripe.checkout.sessions.create({
             mode: "payment",
             payment_method_types: ["card"],
@@ -42,7 +54,7 @@ export default async (req, res) => {
             ],
             success_url: `${process.env.BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.BASE_URL}/store`,
-            customer_email: user.email,
+            ...customer,
         });
 
         res.status(200).json({ id: session.id });

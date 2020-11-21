@@ -35,8 +35,6 @@ export async function getServerSideProps({ query: { session_id: sessionId } }) {
     const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-    console.log(session);
-
     return {
         props: {
             session,
