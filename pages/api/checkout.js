@@ -54,7 +54,7 @@ export default async (req, res) => {
             ],
             success_url: `${process.env.BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.BASE_URL}/store`,
-            allow_promotion_codes=true,
+            allow_promotion_codes: true,
             ...customer,
         });
 
