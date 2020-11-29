@@ -62,7 +62,7 @@ const COCText = () => (
             <ul>
                 <li>The use of sexualized language or imagery and sexual attention or advances</li>
                 <li>The use of inappropriate images, including in a server member's avatar</li>
-                <li>The use of inappropriate language, including in a server member's nickname</li>
+                <li>The use of inappropriate language, including in a server member's username or nickname</li>
                 <li>Any spamming, flaming, baiting or other attention-stealing behavior</li>
                 <li>Any harassment, whether public or private</li>
                 <li>Trolling, insulting/derogatory comments, and personal or political attacks</li>
