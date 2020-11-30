@@ -143,12 +143,6 @@ const Store = ({ user, items }) => {
     return (
         <>
             <Banner />
-            <div className="container">
-                <div className="notification is-danger">
-                    <strong>Black Friday Sale!</strong> Use code <strong>BFSALE20</strong> during checkout to receive
-                    20% off until November 30.
-                </div>
-            </div>
             <Authentication user={user} />
             <Items user={user} items={items} onCheckout={handleCheckout} />
         </>

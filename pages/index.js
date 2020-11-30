@@ -23,10 +23,6 @@ const Banner = () => (
         <div className="container">
             <div className="columns">
                 <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
-                    <div className="notification is-danger">
-                        <strong>Black Friday Sale!</strong> Use code <strong>BFSALE20</strong> during checkout to receive
-                        20% off until November 30.
-                    </div>
                     <picture>
                         <source srcSet={require("../assets/logo.png?webp")} type="image/webp" />
                         <source srcSet={require("../assets/logo.png")} type="image/png" />
