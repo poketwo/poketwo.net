@@ -45,7 +45,7 @@ const RulesText = () => (
                 <li>No trading items in Pokétwo for external currencies, goods, or services.</li>
                 <li>Avoid advertising in channels other than designated ad channels.</li>
                 <li>
-                    Unofficial activities including gambling, redeem trading, and daycare are not encouraged and will
+                    Unofficial transactions including gambling and daycare are disallowed in this server and will
                     receive no support of any kind.
                 </li>
             </ol>
