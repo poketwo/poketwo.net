@@ -75,7 +75,6 @@ const Team = ({ developers, admins, moderators, support, other }) => (
         <Section title="Development" members={developers} />
         <Section title="Administration" members={admins} />
         <Section title="Moderation" members={moderators} />
-        <Section title="Support" members={support} />
         <Section title="Other Significant Contributors" members={other} small />
     </>
 );
@@ -108,12 +107,52 @@ export async function getStaticProps(context) {
                     image: "dagger.png",
                     tagline: "O.o",
                 },
-            ],
-            moderators: [
                 {
                     name: "Hyperbub#9000",
                     image: "hyper.png",
                     tagline: "Your casual fate degenerate who also likes sheep.",
+                },
+            ],
+            moderators: [
+                {
+                    name: "Alkinus#3747",
+                    image: "alki.png",
+                    tagline: "Ultimate Cutiefly Maniac. <33",
+                },
+                {
+                    name: "amie#1273",
+                    image: "amie.png",
+                    tagline: "hiro drew this :qwq:",
+                },
+                {
+                    name: "Anoea#3441",
+                    image: "anoea.jpg",
+                    tagline: "Kindness inspires beauty in all",
+                },
+                {
+                    name: "bell ❣#9211",
+                    image: "bell.png",
+                    tagline: "all i do is make box brownies and sing lady gaga",
+                },
+                {
+                    name: "BlueLego#2332",
+                    image: "bluelego.png",
+                    tagline: "hi",
+                },
+                {
+                    name: "MemeBoiFBCB#8224",
+                    image: "fbcb.png",
+                    tagline: "Gimme your delibirbs",
+                },
+                {
+                    name: "Felix Zhan#8215",
+                    image: "felix.png",
+                    tagline: "simp-le minded.",
+                },
+                {
+                    name: "Harv#0850",
+                    image: "harv.png",
+                    tagline: "People? They come and they leave, but what remains is this night sky",
                 },
                 {
                     name: "Haltfire302#9839",
@@ -121,19 +160,14 @@ export async function getStaticProps(context) {
                     tagline: "likes manga and videogames",
                 },
                 {
-                    name: "rawl#0004",
-                    image: "rawl.jpg",
-                    tagline: "probably sleeping",
+                    name: "Godslayer#6969",
+                    image: "fox.png",
+                    tagline: "Just a fox 🦊",
                 },
                 {
-                    name: "Alkinus#3747",
-                    image: "alki.png",
-                    tagline: "Ultimate Cutiefly Maniac. <33",
-                },
-                {
-                    name: "Tobbe#8621",
-                    image: "tobbe.jpg",
-                    tagline: "Base",
+                    name: "JellyGreen#5506",
+                    image: "jelly.jpg",
+                    tagline: "Praise Sunflora",
                 },
                 {
                     name: "Josh__RL#0001",
@@ -146,36 +180,14 @@ export async function getStaticProps(context) {
                     tagline: "Sylveon queen.",
                 },
                 {
-                    name: "Anoea#3441",
-                    image: "anoea.jpg",
-                    tagline: "Kindness inspires beauty in all",
-                },
-            ],
-            support: [
-                {
                     name: "MaRc#0614",
                     image: "marc.png",
                     tagline: "🐸 owo hug the frogout 🐸",
                 },
                 {
-                    name: "ℍ𝕒𝕣𝕧#0850",
-                    image: "harv.png",
-                    tagline: "People? They come and they leave, but what remains is this night sky",
-                },
-                {
-                    name: "MemeBoiFBCB#0001",
-                    image: "fbcb.png",
-                    tagline: "Gimme your delibirbs",
-                },
-                {
-                    name: "Kamijouとうま#0210",
-                    image: "touma.png",
-                    tagline: "I'll destroy that illusion of yours",
-                },
-                {
-                    name: "Felix Zhan#8215",
-                    image: "felix.png",
-                    tagline: "simp-le minded.",
+                    name: "rawl#3097",
+                    image: "rawl.jpg",
+                    tagline: "probably sleeping",
                 },
                 {
                     name: "SuperJedi224#2591",
@@ -183,29 +195,14 @@ export async function getStaticProps(context) {
                     tagline: "mysterious",
                 },
                 {
-                    name: "bell ❣#3333",
-                    image: "bell.png",
-                    tagline: "all i do is make box brownies and sing lady gaga",
-                },
-                {
                     name: "HiroWilde#0359",
                     image: "hiro.png",
                     tagline: "Simpulsive uwu",
                 },
                 {
-                    name: "JellyGreen#5506",
-                    image: "jelly.jpg",
-                    tagline: "Praise Sunflora",
-                },
-                {
-                    name: "ĪĐontĞiveÅFøx#9049",
-                    image: "fox.png",
-                    tagline: "Just a fox 🦊",
-                },
-                {
-                    name: "amie#1273",
-                    image: "amie.png",
-                    tagline: "hiro drew this :qwq:",
+                    name: "Tobbe#2196",
+                    image: "tobbe.jpg",
+                    tagline: "Base",
                 },
             ],
             other: [
