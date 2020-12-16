@@ -137,7 +137,7 @@ export async function getStaticProps(context) {
                 {
                     name: "BlueLego#2332",
                     image: "bluelego.png",
-                    tagline: "hi",
+                    tagline: "i like lego",
                 },
                 {
                     name: "MemeBoiFBCB#8224",
