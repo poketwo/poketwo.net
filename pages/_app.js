@@ -1,3 +1,4 @@
+import withGA from "next-ga";
 import { DefaultSeo } from "next-seo";
 import Router from "next/router";
 import NProgress from "nprogress";
@@ -26,4 +27,4 @@ const App = ({ Component, pageProps }) => {
     );
 };
 
-export default App;
+export default withGA("G-FWKF67W9X5", Router)(App);
