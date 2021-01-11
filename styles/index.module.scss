@@ -1,19 +1,26 @@
 @media screen and (min-width: 1024px) {
-    .feature-img {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+    .feature-image {
+        padding-top: calc(100% * 11 / 16);
+
+        object {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
     }
+
     .feature {
         z-index: 1;
     }
+
     .features .feature-wrapper:nth-child(odd) :global(.columns) {
         .feature {
             margin-left: -20rem;
         }
     }
+
     .features .feature-wrapper:nth-child(even) :global(.columns) {
         flex-direction: row-reverse;
 
@@ -28,6 +35,7 @@
         padding-top: 1.5rem;
         padding-bottom: 0;
     }
+
     .extra-features {
         padding-top: 1.5rem;
     }

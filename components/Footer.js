@@ -1,6 +1,7 @@
 import { faDiscord, faReddit, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import Link from "next/link";
 
 const FooterLink = ({ href, children, external }) => {
@@ -29,11 +30,7 @@ const Footer = () => (
             <div className="columns is-vcentered">
                 <div className="column is-6-widescreen is-offset-1-widescreen">
                     <figure className="image is-64x64 mb-6 mx-auto-mobile">
-                        <picture>
-                            <source srcSet={require("../assets/logo_dense.png?webp")} type="image/webp" />
-                            <source srcSet={require("../assets/logo_dense.png")} type="image/png" />
-                            <img src={require("../assets/logo_dense.png")} alt="Pokétwo Logo" />
-                        </picture>
+                        <Image src="/assets/logo_dense.png" alt="Pokétwo Logo" width={64} height={64} />
                     </figure>
                     <p className="title is-4">
                         <a href="https://discord.gg/poketwo" className="is-unstyled mr-5" aria-label="Discord">

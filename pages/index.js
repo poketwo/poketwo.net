@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import SVG from "react-inlinesvg";
+import Image from "next/image";
 import useSWR from "swr";
 import styles from "../styles/index.module.scss";
 
@@ -28,20 +28,12 @@ const Banner = () => {
     }
 
     return (
-        <div className={classNames("section", styles.banner)}>
+        <header className={classNames("section", styles.banner)}>
             <div className="container">
                 <div className="columns">
                     <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
                         <figure className="image mx-auto" style={{ width: 200, height: 200 }}>
-                            <picture>
-                                <source srcSet={require("../assets/logo.png?webp")} type="image/webp" />
-                                <source srcSet={require("../assets/logo.png")} type="image/png" />
-                                <img
-                                    src={require("../assets/logo.png")}
-                                    className="has-drop-shadow"
-                                    alt="Pokétwo Logo"
-                                />
-                            </picture>
+                            <Image src="/assets/logo.png" alt="Pokétwo Logo" width={200} height={200} />
                         </figure>
                         <p className="title is-1 is-spaced">
                             The Pokémon experience.
@@ -55,7 +47,7 @@ const Banner = () => {
                         </p>
                         <div className="buttons is-centered">
                             <a
-                                className="button is-medium is-link is-rounded has-shadow"
+                                className="button is-medium has-background-link-dark is-rounded has-shadow"
                                 href="https://invite.poketwo.net"
                             >
                                 <span className="icon">
@@ -80,7 +72,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     );
 };
 
@@ -90,19 +82,9 @@ const RichFeature = ({ filename, title, children }) => {
             <div className="container">
                 <div className="columns is-desktop">
                     <div className="column is-10-desktop desktop-only">
-                        <figure className="image is-3by2">
-                            <object
-                                className={styles["feature-img"]}
-                                data={require(`../assets/mockups/${filename}.svg`)}
-                            >
-                                <picture>
-                                    <source
-                                        srcSet={require(`../assets/mockups/${filename}.png?webp`)}
-                                        type="image/webp"
-                                    />
-                                    <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
-                                    <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
-                                </picture>
+                        <figure className={classNames("image", styles["feature-image"])}>
+                            <object data={require(`../mockups/${filename}.svg`)}>
+                                <Image src={`/assets/mockups/${filename}.png`} alt={title} layout="fill" />
                             </object>
                         </figure>
                     </div>

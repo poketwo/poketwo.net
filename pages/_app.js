@@ -1,3 +1,5 @@
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { DefaultSeo } from "next-seo";
 import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
@@ -6,6 +8,8 @@ import { useEffect } from "react";
 import { pageview } from "../helpers/gtag";
 import MainLayout from "../layouts/MainLayout";
 import "../styles/main.scss";
+
+config.autoAddCss = false;
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());

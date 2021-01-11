@@ -17,7 +17,7 @@
 .has-shadow {
     border: none;
     box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.2), 0 0px 0 1px rgba(10, 10, 10, 0.1);
-    transition: 0.2s ease;
+    transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .has-shadow:hover {
@@ -47,4 +47,8 @@ a.is-unstyled {
 
 .hero.is-transparent {
     background-color: transparent;
+}
+
+.has-text-grey {
+    color: #8b8b8b !important;
 }
