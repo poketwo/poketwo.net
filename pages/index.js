@@ -32,16 +32,17 @@ const Banner = () => {
             <div className="container">
                 <div className="columns">
                     <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
-                        <picture>
-                            <source srcSet={require("../assets/logo.png?webp")} type="image/webp" />
-                            <source srcSet={require("../assets/logo.png")} type="image/png" />
-                            <img
-                                src={require("../assets/logo.png")}
-                                className="has-drop-shadow"
-                                width="200"
-                                alt="Pokétwo Logo"
-                            />
-                        </picture>
+                        <figure className="image mx-auto" style={{ width: 200, height: 200 }}>
+                            <picture>
+                                <source srcSet={require("../assets/logo.png?webp")} type="image/webp" />
+                                <source srcSet={require("../assets/logo.png")} type="image/png" />
+                                <img
+                                    src={require("../assets/logo.png")}
+                                    className="has-drop-shadow"
+                                    alt="Pokétwo Logo"
+                                />
+                            </picture>
+                        </figure>
                         <p className="title is-1 is-spaced">
                             The Pokémon experience.
                             <br />
@@ -89,13 +90,21 @@ const RichFeature = ({ filename, title, children }) => {
             <div className="container">
                 <div className="columns is-desktop">
                     <div className="column is-10-desktop desktop-only">
-                        <SVG src={require(`../assets/mockups/${filename}.svg`)} uniquifyIDs>
-                            <picture>
-                                <source srcSet={require(`../assets/mockups/${filename}.png?webp`)} type="image/webp" />
-                                <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
-                                <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
-                            </picture>
-                        </SVG>
+                        <figure className="image is-3by2">
+                            <object
+                                className={styles["feature-img"]}
+                                data={require(`../assets/mockups/${filename}.svg`)}
+                            >
+                                <picture>
+                                    <source
+                                        srcSet={require(`../assets/mockups/${filename}.png?webp`)}
+                                        type="image/webp"
+                                    />
+                                    <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
+                                    <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
+                                </picture>
+                            </object>
+                        </figure>
                     </div>
                     <div className={classNames("column", styles.feature)}>
                         <div className="box has-background-link-dark">

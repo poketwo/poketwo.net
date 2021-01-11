@@ -1,4 +1,11 @@
 @media screen and (min-width: 1024px) {
+    .feature-img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
     .feature {
         z-index: 1;
     }
