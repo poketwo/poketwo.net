@@ -1,8 +1,9 @@
-import withGA from "next-ga";
 import { DefaultSeo } from "next-seo";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import { useEffect } from "react";
+import { pageview } from "../helpers/gtag";
 import MainLayout from "../layouts/MainLayout";
 import "../styles/main.scss";
 
@@ -13,6 +14,13 @@ Router.events.on("routeChangeError", () => NProgress.done());
 const App = ({ Component, pageProps }) => {
     const Layout = Component.layout || MainLayout;
     const layoutProps = Component.layoutProps || {};
+
+    const router = useRouter();
+
+    useEffect(() => {
+        router.events.on("routeChangeComplete", pageview);
+        return () => router.events.off("routeChangeComplete", pageview);
+    }, [router.events]);
 
     return (
         <>
@@ -27,4 +35,4 @@ const App = ({ Component, pageProps }) => {
     );
 };
 
-export default withGA("G-FWKF67W9X5", Router)(App);
+export default App;
