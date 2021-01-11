@@ -13,90 +13,95 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import Link from "next/link";
 import SVG from "react-inlinesvg";
-import { Parallax, ParallaxProvider, useController } from "react-scroll-parallax";
+import useSWR from "swr";
 import styles from "../styles/index.module.scss";
 
-const Banner = () => (
-    <div className={classNames("section", styles.banner)}>
-        <div className="container">
-            <div className="columns">
-                <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
-                    <picture>
-                        <source srcSet={require("../assets/logo.png?webp")} type="image/webp" />
-                        <source srcSet={require("../assets/logo.png")} type="image/png" />
-                        <img
-                            src={require("../assets/logo.png")}
-                            className="has-drop-shadow"
-                            width="200"
-                            alt="Pokétwo Logo"
-                        />
-                    </picture>
-                    <p className="title is-1 is-spaced">
-                        The Pokémon experience.
-                        <br />
-                        On Discord.
-                    </p>
-                    <p className="subtitle is-4">
-                        Pokétwo brings the Pokémon experience to Discord. Catch randomly-spawning pokémon in your
-                        servers, trade them to expand your collection, battle with your friends to win rewards, and
-                        more. All free to play and open source.
-                    </p>
-                    <div className="buttons is-centered">
-                        <a className="button is-medium is-link is-rounded has-shadow" href="https://invite.poketwo.net">
-                            <span className="icon">
-                                <FontAwesomeIcon icon={faRobot} />
-                            </span>
-                            <span>Invite Pokétwo</span>
-                        </a>
-                        <a
-                            className="button is-medium is-light is-rounded has-shadow"
-                            href="https://discord.gg/poketwo"
-                        >
-                            <span className="icon">
-                                <FontAwesomeIcon icon={faDiscord} />
-                            </span>
-                            <span>Join Official Server</span>
-                        </a>
+const fetcher = (...args) => fetch(...args).then(res => res.json());
+
+const Banner = () => {
+    const { data } = useSWR("https://api.poketwo.net/stats", fetcher);
+    let servers, users;
+    if (data) {
+        servers = Object.values(data).reduce((acc, x) => acc + Number(x.guild_count), 0);
+        users = Object.values(data).reduce((acc, x) => acc + Number(x.user_count), 0);
+    }
+
+    return (
+        <div className={classNames("section", styles.banner)}>
+            <div className="container">
+                <div className="columns">
+                    <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
+                        <picture>
+                            <source srcSet={require("../assets/logo.png?webp")} type="image/webp" />
+                            <source srcSet={require("../assets/logo.png")} type="image/png" />
+                            <img
+                                src={require("../assets/logo.png")}
+                                className="has-drop-shadow"
+                                width="200"
+                                alt="Pokétwo Logo"
+                            />
+                        </picture>
+                        <p className="title is-1 is-spaced">
+                            The Pokémon experience.
+                            <br />
+                            On Discord.
+                        </p>
+                        <p className="subtitle is-4">
+                            Pokétwo brings the Pokémon experience to Discord. Catch randomly-spawning pokémon in your
+                            servers, trade them to expand your collection, battle with your friends to win rewards, and
+                            more. All free to play and open source.
+                        </p>
+                        <div className="buttons is-centered">
+                            <a
+                                className="button is-medium is-link is-rounded has-shadow"
+                                href="https://invite.poketwo.net"
+                            >
+                                <span className="icon">
+                                    <FontAwesomeIcon icon={faRobot} />
+                                </span>
+                                <span>Invite Pokétwo</span>
+                            </a>
+                            <a
+                                className="button is-medium is-light is-rounded has-shadow"
+                                href="https://discord.gg/poketwo"
+                            >
+                                <span className="icon">
+                                    <FontAwesomeIcon icon={faDiscord} />
+                                </span>
+                                <span>Join Official Server</span>
+                            </a>
+                        </div>
+                        <p style={{ opacity: data ? 1 : 0, transition: "opacity 0.3s" }}>
+                            Serving <b>{users?.toLocaleString()}</b> members in <b>{servers?.toLocaleString()}</b>{" "}
+                            servers
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 const RichFeature = ({ filename, title, children }) => {
-    const controller = typeof window === "undefined" ? {} : useController().parallaxController;
     return (
         <div className={classNames("section", styles["feature-wrapper"])}>
             <div className="container">
                 <div className="columns is-desktop">
                     <div className="column is-10-desktop desktop-only">
-                        <Parallax y={[-10, 10]}>
-                            <SVG
-                                src={require(`../assets/mockups/${filename}.svg`)}
-                                onLoad={controller.update}
-                                uniquifyIDs
-                            >
-                                <picture>
-                                    <source
-                                        srcSet={require(`../assets/mockups/${filename}.png?webp`)}
-                                        type="image/webp"
-                                    />
-                                    <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
-                                    <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
-                                </picture>
-                            </SVG>
-                        </Parallax>
+                        <SVG src={require(`../assets/mockups/${filename}.svg`)} uniquifyIDs>
+                            <picture>
+                                <source srcSet={require(`../assets/mockups/${filename}.png?webp`)} type="image/webp" />
+                                <source srcSet={require(`../assets/mockups/${filename}.png`)} type="image/png" />
+                                <img src={require(`../assets/mockups/${filename}.png`)} alt={title} />
+                            </picture>
+                        </SVG>
                     </div>
                     <div className={classNames("column", styles.feature)}>
-                        <Parallax y={[-2, 2]}>
-                            <div className="box has-background-link-dark">
-                                <p className="title is-4">{title}</p>
-                                <div className="content">{children}</div>
-                            </div>
-                        </Parallax>
+                        <div className="box has-background-link-dark">
+                            <p className="title is-4">{title}</p>
+                            <div className="content">{children}</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -194,11 +199,9 @@ const CTA = () => (
 
 const Index = () => (
     <>
-        <ParallaxProvider>
-            <Banner />
-            <Features />
-            <CTA />
-        </ParallaxProvider>
+        <Banner />
+        <Features />
+        <CTA />
     </>
 );
 
