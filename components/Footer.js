@@ -48,7 +48,7 @@ const Footer = () => (
                     </p>
                 </div>
                 <div className="column is-2-widescreen">
-                    <p className="title is-5 mb-2">Pokétwo</p>
+                    <h4 className="title is-5 mb-2">Pokétwo</h4>
                     <FooterLink href="/">Home</FooterLink>
                     <FooterLink href="/people">People</FooterLink>
                     <FooterLink href="/store">Store</FooterLink>
@@ -57,7 +57,7 @@ const Footer = () => (
                     </FooterLink>
                 </div>
                 <div className="column is-2-widescreen">
-                    <p className="title is-5 mb-2">Community</p>
+                    <h4 className="title is-5 mb-2">Community</h4>
                     <FooterLink href="https://discord.gg/poketwo" external>
                         Discord Server
                     </FooterLink>

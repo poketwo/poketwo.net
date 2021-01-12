@@ -28,18 +28,18 @@ const Banner = () => {
     }
 
     return (
-        <main className={classNames("section", styles.banner)} id="main">
+        <header className={classNames("section", styles.banner)} id="main">
             <div className="container">
                 <div className="columns">
                     <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
                         <figure className="image mx-auto" style={{ width: 200, height: 200 }}>
                             <Image src="/assets/logo.png" alt="Pokétwo Logo" width={200} height={200} />
                         </figure>
-                        <p className="title is-1 is-spaced">
+                        <h1 className="title is-1 is-spaced">
                             The Pokémon experience.
                             <br />
                             On Discord.
-                        </p>
+                        </h1>
                         <p className="subtitle is-4">
                             Pokétwo brings the Pokémon experience to Discord. Catch randomly-spawning pokémon in your
                             servers, trade them to expand your collection, battle with your friends to win rewards, and
@@ -72,7 +72,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-        </main>
+        </header>
     );
 };
 
@@ -89,10 +89,10 @@ const RichFeature = ({ filename, title, children }) => {
                         </figure>
                     </div>
                     <div className={classNames("column", styles.feature)}>
-                        <div className="box has-background-link-dark">
-                            <p className="title is-4">{title}</p>
+                        <article className="box has-background-link-dark">
+                            <h3 className="title is-4">{title}</h3>
                             <div className="content">{children}</div>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -104,15 +104,15 @@ const Feature = ({ icon, children }) => (
     <div className="column is-3-desktop is-4-tablet is-6-mobile">
         <div className="box has-background-link-dark has-text-centered h-100">
             {icon && <FontAwesomeIcon icon={icon} size="2x" className="mb-4" />}
-            <p className="title is-4">{children}</p>
+            <h3 className="title is-4">{children}</h3>
         </div>
     </div>
 );
 
 const Features = () => (
-    <>
+    <section>
         <div className="section">
-            <p className="title is-2 has-text-centered">Features</p>
+            <h2 className="title is-2 has-text-centered">Features</h2>
         </div>
         <div className={styles.features}>
             <RichFeature filename="catching_dark" title="Catch &amp; Collect Pokémon">
@@ -169,14 +169,14 @@ const Features = () => (
                 </div>
             </div>
         </div>
-    </>
+    </section>
 );
 
 const CTA = () => (
-    <div className="hero is-large is-transparent">
+    <section className="hero is-large is-transparent">
         <div className="hero-body">
             <div className="container has-text-centered">
-                <p className="title is-2">Ready to begin your adventure?</p>
+                <h2 className="title is-2">Ready to begin your adventure?</h2>
                 <a className="button is-large is-link is-rounded has-shadow" href="https://discord.gg/poketwo">
                     <span>Get Started</span>
                     <span className="icon">
@@ -185,14 +185,16 @@ const CTA = () => (
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 );
 
 const Index = () => (
     <>
         <Banner />
-        <Features />
-        <CTA />
+        <main>
+            <Features />
+            <CTA />
+        </main>
     </>
 );
 
