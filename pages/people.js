@@ -22,7 +22,9 @@ const TeamMember = ({ name, tagline, image, small = false }) => (
         <div className="box has-shadow has-text-centered h-100">
             {image && (
                 <figure className="image is-96x96 mb-5 mx-auto">
-                    <Image className="is-rounded" src={`/assets/team/${image}`} alt={name} width={96} height={96} />
+                    <NoSSR>
+                        <Image className="is-rounded" src={`/assets/team/${image}`} alt={name} width={96} height={96} />
+                    </NoSSR>
                 </figure>
             )}
             {name && <p className="title is-5">{name}</p>}
