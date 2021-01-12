@@ -28,7 +28,7 @@ const Banner = () => {
     }
 
     return (
-        <header className={classNames("section", styles.banner)}>
+        <main className={classNames("section", styles.banner)} id="main">
             <div className="container">
                 <div className="columns">
                     <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
@@ -72,7 +72,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-        </header>
+        </main>
     );
 };
 
@@ -83,7 +83,7 @@ const RichFeature = ({ filename, title, children }) => {
                 <div className="columns is-desktop">
                     <div className="column is-10-desktop desktop-only">
                         <figure className={classNames("image", styles["feature-image"])}>
-                            <object data={require(`../mockups/${filename}.svg`)}>
+                            <object data={require(`../mockups/${filename}.svg`)} title={title}>
                                 <Image src={`/assets/mockups/${filename}.png`} alt={title} layout="fill" />
                             </object>
                         </figure>
