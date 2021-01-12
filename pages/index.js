@@ -82,7 +82,7 @@ const RichFeature = ({ filename, title, children }) => {
             <div className="container">
                 <div className="columns is-desktop">
                     <div className="column is-10-desktop desktop-only">
-                        <figure className={classNames("image", styles["feature-image"])}>
+                        <figure className={classNames("image is-3by2", styles["feature-image"])}>
                             <object data={require(`../mockups/${filename}.svg`)} title={title}>
                                 <Image src={`/assets/mockups/${filename}.png`} alt={title} layout="fill" />
                             </object>
