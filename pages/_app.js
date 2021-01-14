@@ -31,6 +31,21 @@ const App = ({ Component, pageProps }) => {
             <DefaultSeo
                 title="Pokétwo"
                 description="Catch, level, and evolve pokémon. Trade with friends. Battle with other players. Compete to catch 'em all."
+	        openGraph={{
+                    site_name: 'Pokétwo',
+		    type: 'website',
+		    url: 'https://poketwo.net',
+		    images: [
+			{
+			    url: 'https://poketwo.net/_next/image?url=%2Fassets%2Flogo.png&w=640&q=75',
+			    width: 200,
+			    height: 200,
+			    alt: 'Pokétwo Logo'
+			}
+		    ]
+		    
+		    
+	        }}
             />
             <Layout {...layoutProps}>
                 <Component {...pageProps} />

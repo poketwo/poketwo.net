@@ -1,0 +1,44 @@
+[12:27:34.977] Global cache location '/Users/jmahavir/Library/Caches/typescript/4.1', safe file path '/usr/local/lib/node_modules/typescript/lib/typingsafelist.json', types map path /usr/local/lib/node_modules/typescript/lib/typesmap.json
+[12:27:34.981] Processing cache location '/Users/jmahavir/Library/Caches/typescript/4.1'
+[12:27:34.982] Trying to find '/Users/jmahavir/Library/Caches/typescript/4.1/package.json'...
+[12:27:34.983] Finished processing cache location '/Users/jmahavir/Library/Caches/typescript/4.1'
+[12:27:34.985] Process id: 86770
+[12:27:34.986] NPM location: /usr/local/Cellar/node/15.4.0/bin/npm (explicit '--npmLocation' not  provided)
+[12:27:34.986] validateDefaultNpmLocation: false
+[12:27:34.987] Npm config file: /Users/jmahavir/Library/Caches/typescript/4.1/package.json
+[12:27:34.987] Updating types-registry npm package...
+[12:27:34.988] Exec: /usr/local/Cellar/node/15.4.0/bin/npm install --ignore-scripts types-registry@latest
+[12:27:35.016]     Failed. stdout:
+    stderr:
+    /bin/sh: /usr/local/Cellar/node/15.4.0/bin/npm: No such file or directory
+    
+[12:27:35.018] Updated types-registry npm package
+[12:27:35.019] Types registry file '/Users/jmahavir/Library/Caches/typescript/4.1/node_modules/types-registry/index.json' does not exist
+[12:27:36.441] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":["/usr/local/lib/node_modules/typescript/lib/lib.d.ts","/usr/local/lib/node_modules/typescript/lib/lib.es5.d.ts","/usr/local/lib/node_modules/typescript/lib/lib.dom.d.ts","/usr/local/lib/node_modules/typescript/lib/lib.webworker.importscripts.d.ts","/usr/local/lib/node_modules/typescript/lib/lib.scripthost.d.ts","/Users/jmahavir/prs/poketwo.net/helpers/gtag.js","/Users/jmahavir/prs/poketwo.net/components/Footer.js","/Users/jmahavir/prs/poketwo.net/components/Navbar.js","/Users/jmahavir/prs/poketwo.net/layouts/MainLayout.js","/Users/jmahavir/prs/poketwo.net/pages/_app.js"],"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":["@fortawesome/fontawesome-svg-core","@fortawesome/free-brands-svg-icons","@fortawesome/free-solid-svg-icons","@fortawesome/react-fontawesome","classnames","next","next-seo","nprogress","react"],"projectRootPath":"/Users/jmahavir/prs/poketwo.net/pages","kind":"discover"}
+[12:27:36.473] Loaded safelist from types map file '/usr/local/lib/node_modules/typescript/lib/typesmap.json'
+[12:27:36.476] Explicitly included types: []
+[12:27:36.478] Inferred typings from unresolved imports: ["@fortawesome/fontawesome-svg-core","@fortawesome/free-brands-svg-icons","@fortawesome/free-solid-svg-icons","@fortawesome/react-fontawesome","classnames","next","next-seo","nprogress","react"]
+[12:27:36.478] Result: {"cachedTypingPaths":[],"newTypingNames":["@fortawesome/fontawesome-svg-core","@fortawesome/free-brands-svg-icons","@fortawesome/free-solid-svg-icons","@fortawesome/react-fontawesome","classnames","next","next-seo","nprogress","react"],"filesToWatch":["/Users/jmahavir/prs/poketwo.net/helpers/bower_components","/Users/jmahavir/prs/poketwo.net/helpers/node_modules","/Users/jmahavir/prs/poketwo.net/components/bower_components","/Users/jmahavir/prs/poketwo.net/components/node_modules","/Users/jmahavir/prs/poketwo.net/layouts/bower_components","/Users/jmahavir/prs/poketwo.net/layouts/node_modules","/Users/jmahavir/prs/poketwo.net/pages/bower_components","/Users/jmahavir/prs/poketwo.net/pages/node_modules"]}
+[12:27:36.478] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":["@fortawesome/fontawesome-svg-core","@fortawesome/free-brands-svg-icons","@fortawesome/free-solid-svg-icons","@fortawesome/react-fontawesome","classnames","next","next-seo","nprogress","react"],"filesToWatch":["/Users/jmahavir/prs/poketwo.net/helpers/bower_components","/Users/jmahavir/prs/poketwo.net/helpers/node_modules","/Users/jmahavir/prs/poketwo.net/components/bower_components","/Users/jmahavir/prs/poketwo.net/components/node_modules","/Users/jmahavir/prs/poketwo.net/layouts/bower_components","/Users/jmahavir/prs/poketwo.net/layouts/node_modules","/Users/jmahavir/prs/poketwo.net/pages/bower_components","/Users/jmahavir/prs/poketwo.net/pages/node_modules"]}
+[12:27:36.479] DirectoryWatcher:: Added:: WatchInfo: /Users/jmahavir/prs/poketwo.net/helpers/bower_components
+[12:27:36.481] DirectoryWatcher:: Added:: WatchInfo: /Users/jmahavir/prs/poketwo.net/helpers/node_modules
+[12:27:36.481] DirectoryWatcher:: Added:: WatchInfo: /Users/jmahavir/prs/poketwo.net/components/bower_components
+[12:27:36.482] DirectoryWatcher:: Added:: WatchInfo: /Users/jmahavir/prs/poketwo.net/components/node_modules
+[12:27:36.482] DirectoryWatcher:: Added:: WatchInfo: /Users/jmahavir/prs/poketwo.net/layouts/bower_components
+[12:27:36.483] DirectoryWatcher:: Added:: WatchInfo: /Users/jmahavir/prs/poketwo.net/layouts/node_modules
+[12:27:36.484] DirectoryWatcher:: Added:: WatchInfo: /Users/jmahavir/prs/poketwo.net/pages/bower_components
+[12:27:36.484] DirectoryWatcher:: Added:: WatchInfo: /Users/jmahavir/prs/poketwo.net/pages/node_modules
+[12:27:36.485] Installing typings ["@fortawesome/fontawesome-svg-core","@fortawesome/free-brands-svg-icons","@fortawesome/free-solid-svg-icons","@fortawesome/react-fontawesome","classnames","next","next-seo","nprogress","react"]
+[12:27:36.485] '@fortawesome/fontawesome-svg-core':: Entry for package 'fortawesome__fontawesome-svg-core' does not exist in local types registry - skipping...
+[12:27:36.486] '@fortawesome/free-brands-svg-icons':: Entry for package 'fortawesome__free-brands-svg-icons' does not exist in local types registry - skipping...
+[12:27:36.486] '@fortawesome/free-solid-svg-icons':: Entry for package 'fortawesome__free-solid-svg-icons' does not exist in local types registry - skipping...
+[12:27:36.487] '@fortawesome/react-fontawesome':: Entry for package 'fortawesome__react-fontawesome' does not exist in local types registry - skipping...
+[12:27:36.487] 'classnames':: Entry for package 'classnames' does not exist in local types registry - skipping...
+[12:27:36.487] 'next':: Entry for package 'next' does not exist in local types registry - skipping...
+[12:27:36.487] 'next-seo':: Entry for package 'next-seo' does not exist in local types registry - skipping...
+[12:27:36.488] 'nprogress':: Entry for package 'nprogress' does not exist in local types registry - skipping...
+[12:27:36.488] 'react':: Entry for package 'react' does not exist in local types registry - skipping...
+[12:27:36.488] All typings are known to be missing or invalid - no need to install more typings
+[12:27:36.489] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"target":1,"jsx":1,"allowNonTsExtensions":true,"allowJs":true,"noEmitForJsFiles":true,"maxNodeModuleJsDepth":2},"typings":[],"unresolvedImports":["@fortawesome/fontawesome-svg-core","@fortawesome/free-brands-svg-icons","@fortawesome/free-solid-svg-icons","@fortawesome/react-fontawesome","classnames","next","next-seo","nprogress","react"],"kind":"action::set"}
+[12:27:36.489] Response has been sent.
