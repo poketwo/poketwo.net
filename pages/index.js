@@ -23,8 +23,8 @@ const Banner = () => {
     const { data } = useSWR("https://api.poketwo.net/stats", fetcher);
     let servers, users;
     if (data) {
-        servers = Object.values(data).reduce((acc, x) => acc + Number(x.guild_count), 0);
-        users = Object.values(data).reduce((acc, x) => acc + Number(x.user_count), 0);
+        servers = Object.values(data).reduce((acc, x) => acc + Number(x.guild_count ?? 0), 0);
+        users = Object.values(data).reduce((acc, x) => acc + Number(x.user_count ?? 0), 0);
     }
 
     return (
