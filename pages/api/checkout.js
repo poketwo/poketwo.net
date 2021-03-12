@@ -46,6 +46,9 @@ export default async (req, res) => {
                     ...user,
                 },
             },
+            metadata: {
+                ...user,
+            },
             line_items: [
                 {
                     price: prices[amount],
