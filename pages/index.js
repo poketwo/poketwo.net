@@ -14,19 +14,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import Image from "next/image";
-import useSWR from "swr";
 import styles from "../styles/index.module.scss";
 
-const fetcher = (...args) => fetch(...args).then(res => res.json());
-
 const Banner = () => {
-    // const { data } = useSWR("https://api.poketwo.net/stats", fetcher);
-    let servers, users;
-    // if (data) {
-    //     servers = Object.values(data).reduce((acc, x) => acc + Number(x.guild_count ?? 0), 0);
-    //     users = Object.values(data).reduce((acc, x) => acc + Number(x.user_count ?? 0), 0);
-    // }
-
     return (
         <header className={classNames("section", styles.banner)} id="main">
             <div className="container">
@@ -65,10 +55,6 @@ const Banner = () => {
                                 <span>Join Official Server</span>
                             </a>
                         </div>
-                        <p style={{ opacity: data ? 1 : 0, transition: "opacity 0.3s" }}>
-                            Serving <b>{users?.toLocaleString()}</b> members in <b>{servers?.toLocaleString()}</b>{" "}
-                            servers
-                        </p>
                     </div>
                 </div>
             </div>
