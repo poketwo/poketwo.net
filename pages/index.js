@@ -20,7 +20,7 @@ import styles from "../styles/index.module.scss";
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const Banner = () => {
-    const { data, error } = useSWR("/api/db/stats", fetcher);
+    const { data } = useSWR("/api/db/stats", fetcher);
 
     return (
         <header className={classNames("section", styles.banner)} id="main">
@@ -61,8 +61,8 @@ const Banner = () => {
                             </a>
                         </div>
                         <p style={{ opacity: data ? 1 : 0, transition: "opacity 0.3s" }}>
-                            Serving <b>{data.users?.toLocaleString()}</b> registered users in{" "}
-                            <b>{data.servers.toLocaleString()}</b> servers
+                            Serving <b>{data?.users?.toLocaleString()}</b> registered users in{" "}
+                            <b>{data?.servers.toLocaleString()}</b> servers
                         </p>
                     </div>
                 </div>
