@@ -1,3 +1,4 @@
+import useSWR from "swr";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import {
     faArrowRight,
@@ -16,7 +17,11 @@ import classNames from "classnames";
 import Image from "next/image";
 import styles from "../styles/index.module.scss";
 
+const fetcher = (...args) => fetch(...args).then(res => res.json());
+
 const Banner = () => {
+    const { data, error } = useSWR("/api/db/stats", fetcher);
+
     return (
         <header className={classNames("section", styles.banner)} id="main">
             <div className="container">
@@ -55,6 +60,10 @@ const Banner = () => {
                                 <span>Join Official Server</span>
                             </a>
                         </div>
+                        <p style={{ opacity: data ? 1 : 0, transition: "opacity 0.3s" }}>
+                            Serving <b>{data.users?.toLocaleString()}</b> registered users in{" "}
+                            <b>{data.servers.toLocaleString()}</b> servers
+                        </p>
                     </div>
                 </div>
             </div>
