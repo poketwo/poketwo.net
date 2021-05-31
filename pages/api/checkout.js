@@ -14,6 +14,7 @@ const live_prices = {
     10: "price_1HWYyJL49CplPi5yrhmNrWMk",
     20: "price_1HWYyGL49CplPi5yW5y44i1v",
     40: "price_1HWYy7L49CplPi5ylvpVR9D0",
+    100: "price_1Iwv5nL49CplPi5ygL7NMfiM",
 };
 
 const prices = process.env.BASE_URL.includes("localhost") ? test_prices : live_prices;
