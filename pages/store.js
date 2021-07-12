@@ -1,7 +1,10 @@
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loadStripe } from "@stripe/stripe-js";
 import classNames from "classnames";
 import Link from "next/link";
 import { useState } from "react";
+import Stripe from "stripe";
 import { withSession } from "../helpers/session";
 import styles from "../styles/store.module.scss";
 
@@ -14,56 +17,6 @@ const Banner = () => (
         </div>
     </div>
 );
-
-const Item = ({ name, price, selected, onSelect }) => (
-    <div className={classNames("column", styles.item)} onClick={onSelect}>
-        <div
-            className={classNames({
-                "box has-shadow h-100": true,
-                "has-background-link-dark": selected,
-            })}
-        >
-            <p className="title is-4">{name}</p>
-            <p className="subtitle is-5">${price} USD</p>
-        </div>
-    </div>
-);
-
-const Items = ({ user, items, onCheckout }) => {
-    const [selected, setSelected] = useState(-1);
-    const authenticated = user !== null;
-
-    return (
-        <>
-            <div className="section">
-                <div className="container has-text-centered">
-                    <div className="columns">
-                        {items.map(({ name, price }, idx) => (
-                            <Item
-                                name={name}
-                                price={price}
-                                key={idx}
-                                selected={selected == idx}
-                                onSelect={setSelected.bind(null, idx)}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <div className="section">
-                <div className="container has-text-centered">
-                    <button
-                        className="button is-link is-medium is-rounded has-shadow"
-                        onClick={() => onCheckout(items[selected])}
-                        disabled={!authenticated || selected === -1}
-                    >
-                        Checkout{selected !== -1 && <> (${items[selected].price})</>}
-                    </button>
-                </div>
-            </div>
-        </>
-    );
-};
 
 const Authentication = ({ user }) => {
     const authenticated = user !== null;
@@ -85,48 +38,133 @@ const Authentication = ({ user }) => {
                     </Link>
                 )}
                 {authenticated && (
-                    <>
-                        <div className="columns is-centered">
-                            <div className="column is-narrow">
-                                <div className="box px-6">
-                                    <figure className="image is-96x96 mb-5 mx-auto">
-                                        <img
-                                            className="profile-circle is-rounded"
-                                            src={avatar_url}
-                                            alt="Profile Picture"
-                                        />
-                                    </figure>
-                                    <p className="title is-4">
-                                        {user.username}#{user.discriminator}
-                                    </p>
-                                    <p className="subtitle is-5">{user.email}</p>
-                                </div>
+                    <div className="columns is-centered">
+                        <div className="column is-narrow">
+                            <div className="box px-6">
+                                <figure className="image is-96x96 mb-5 mx-auto">
+                                    <img className="profile-circle is-rounded" src={avatar_url} alt="Profile Picture" />
+                                </figure>
+                                <p className="title is-4">
+                                    {user.username}#{user.discriminator}
+                                </p>
+                                <p className="subtitle is-5">{user.email}</p>
                             </div>
                         </div>
-
-                        <Link href="/api/logout">
-                            <a className="button is-light is-rounded has-shadow">Logout</a>
-                        </Link>
-                    </>
+                    </div>
+                )}
+                {authenticated && (
+                    <Link href="/api/logout">
+                        <a className="button is-light is-rounded has-shadow">Logout</a>
+                    </Link>
                 )}
             </div>
         </div>
     );
 };
 
-const Store = ({ user, items }) => {
+const Item = ({ name, formatted, selected, onSelect }) => (
+    <div className={classNames("column", styles.item)} onClick={onSelect}>
+        <div
+            className={classNames({
+                "box has-shadow h-100": true,
+                "has-background-link-dark": selected,
+            })}
+        >
+            <p className="title is-4">{name}</p>
+            <p className="subtitle is-5"> {formatted} </p>
+        </div>
+    </div>
+);
+
+const Items = ({ user, items, onCheckout }) => {
+    const [selected, setSelected] = useState(-1);
+    const authenticated = user !== null;
+
+    return (
+        <>
+            <div className="section">
+                <div className="container has-text-centered">
+                    <div className="columns">
+                        {items.map(({ name, formatted }, idx) => (
+                            <Item
+                                name={name}
+                                formatted={formatted}
+                                key={idx}
+                                selected={selected == idx}
+                                onSelect={() => setSelected(idx)}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="section">
+                <div className="container has-text-centered">
+                    <button
+                        className="button is-link is-medium is-rounded has-shadow"
+                        onClick={() => onCheckout(items[selected])}
+                        disabled={!authenticated || selected === -1}
+                    >
+                        Checkout{selected !== -1 && <> — {items[selected].formatted}</>}
+                    </button>
+                </div>
+            </div>
+        </>
+    );
+};
+
+const CurrencySelect = ({ choices, selected, onSelect }) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <div className="section py-0">
+            <div className="container has-text-centered">
+                <div className={classNames("dropdown", { "is-active": open })}>
+                    <div className="dropdown-trigger">
+                        <button
+                            className="button"
+                            aria-haspopup="true"
+                            aria-controls="dropdown-menu"
+                            onClick={() => setOpen(!open)}
+                        >
+                            <span>{selected}</span>
+                            <span className="icon is-small">
+                                <FontAwesomeIcon icon={faAngleDown} />
+                            </span>
+                        </button>
+                    </div>
+                    <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div className="dropdown-content has-text-left">
+                            {choices.map(x => (
+                                <a
+                                    key={x}
+                                    className={classNames("dropdown-item", { "is-active": x === selected })}
+                                    onClick={() => {
+                                        onSelect(x);
+                                        setOpen(false);
+                                    }}
+                                >
+                                    {x}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const Store = ({ user, currencies }) => {
+    const [currency, setCurrency] = useState("USD");
+    const format = new Intl.NumberFormat(undefined, { currency, style: "currency", maximumFractionDigits: 2 });
+
     const handleCheckout = async item => {
         const stripe = await stripePromise;
 
         const response = await fetch("/api/checkout", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                amount: item.price,
-                user,
-            }),
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ price_id: item.id, user }),
         });
 
         const session = await response.json();
@@ -140,11 +178,14 @@ const Store = ({ user, items }) => {
         }
     };
 
+    const items = currencies[currency].map(x => ({ ...x, formatted: `${format.format(x.amount / 100)}` }));
+
     return (
         <>
             <Banner />
             <Authentication user={user} />
-            <Items user={user} items={items} onCheckout={handleCheckout} />
+            <CurrencySelect choices={Object.keys(currencies)} selected={currency} onSelect={setCurrency} />
+            <Items user={user} items={items} currency={currency} onCheckout={handleCheckout} />
         </>
     );
 };
@@ -152,16 +193,20 @@ const Store = ({ user, items }) => {
 export default Store;
 
 export const getServerSideProps = withSession(async ({ req }) => {
-    return {
-        props: {
-            user: req.session.get("user") ?? null,
-            items: [
-                { name: "500 Shards", price: 5 },
-                { name: "1,100 Shards", price: 10 },
-                { name: "2,400 Shards", price: 20 },
-                { name: "5,600 Shards", price: 40 },
-                { name: "15,000 Shards", price: 100 },
-            ],
-        },
-    };
+    const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+
+    const productsData = await stripe.products.list({ active: true });
+    const products = productsData["data"].reduce((a, x) => ({ ...a, [x["id"]]: x }), {});
+    const prices = await stripe.prices.list({ active: true, limit: 100 });
+
+    const currencies = prices.data.reduce((acc, price) => {
+        const curr = price.currency.toUpperCase();
+        const prev = acc[curr] ?? [];
+        acc[curr] = [...prev, { id: price.id, name: products[price.product].name, amount: price.unit_amount }].sort(
+            (a, b) => a.amount - b.amount
+        );
+        return acc;
+    }, {});
+
+    return { props: { user: req.session.get("user") ?? null, currencies } };
 });

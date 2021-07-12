@@ -12,8 +12,15 @@ const SessionDetails = ({ session }) => (
     <div className="section">
         <div className="container has-text-centered">
             <p>
-                Your purchase of <b>${session.amount_total / 100}</b> was successful, and a receipt has been sent to{" "}
-                <b>{session.customer_email}</b>.
+                Your purchase of{" "}
+                <b>
+                    {new Intl.NumberFormat(undefined, {
+                        currency: session.currency,
+                        style: "currency",
+                        maximumFractionDigits: 2,
+                    }).format(session.amount_total / 100)}
+                </b>{" "}
+                was successful, and a receipt has been sent to <b>{session.customer_details.email}</b>.
             </p>
             <p>For any questions or concerns, please contact Oliver#0001 on Discord.</p>
         </div>

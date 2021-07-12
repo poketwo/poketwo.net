@@ -65,8 +65,11 @@ $pagination-border-color: $grey-darker;
 $pagination-disabled: $grey-light;
 $pagination-disabled-background-color: $grey-dark;
 
-$dropdown-content-background-color: $background;
+$dropdown-background-color: $grey-accent;
+$dropdown-content-background-color: $grey-accent;
+$dropdown-item-hover-background-color: $grey-darker;
 $dropdown-item-color: $text;
+$dropdown-item-hover-color: $white;
 
 $navbar-background-color: $body-background-color;
 $navbar-item-color: $white;
