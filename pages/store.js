@@ -166,7 +166,7 @@ const Store = ({ user, currencies, defaultCurrency }) => {
         const response = await fetch("/api/checkout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ price_id: item.id, user }),
+            body: JSON.stringify({ price_id: item.id, user, currency }),
         });
 
         const session = await response.json();
