@@ -154,8 +154,10 @@ const CurrencySelect = ({ choices, selected, onSelect }) => {
     );
 };
 
-const Store = ({ user, currencies }) => {
-    const [currency, setCurrency] = useState("USD");
+const Store = ({ user, currencies, defaultCurrency }) => {
+    if (!currencies.hasOwnProperty(defaultCurrency)) defaultCurrency = "USD";
+
+    const [currency, setCurrency] = useState(defaultCurrency);
     const format = new Intl.NumberFormat(undefined, { currency, style: "currency", maximumFractionDigits: 2 });
 
     const handleCheckout = async item => {
@@ -193,6 +195,8 @@ const Store = ({ user, currencies }) => {
 export default Store;
 
 export const getServerSideProps = withSession(async ({ req }) => {
+    // Get products
+
     const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
     const productsData = await stripe.products.list({ active: true });
@@ -208,5 +212,24 @@ export const getServerSideProps = withSession(async ({ req }) => {
         return acc;
     }, {});
 
-    return { props: { user: req.session.get("user") ?? null, currencies } };
+    // Get default currency
+
+    let defaultCurrency = "USD";
+
+    try {
+        const ipregistry = new IpregistryClient(process.env.IPREGISTRY_API_KEY);
+        const ip = req.headers["x-real-ip"] || req.connection.remoteAddress;
+        const response = await ipregistry.lookup(ip);
+        defaultCurrency = response.data.currency.code;
+    } catch {}
+
+    return {
+        props: {
+            user: req.session.get("user") ?? null,
+            currencies,
+            defaultCurrency,
+        },
+    };
 });
+
+import { IpregistryClient } from "@ipregistry/client";
