@@ -186,7 +186,7 @@ const Store = ({ user, currencies, defaultCurrency }) => {
         <>
             <Banner />
             <Authentication user={user} />
-            <CurrencySelect choices={Object.keys(currencies)} selected={currency} onSelect={setCurrency} />
+            {/* <CurrencySelect choices={Object.keys(currencies)} selected={currency} onSelect={setCurrency} /> */}
             <Items user={user} items={items} currency={currency} onCheckout={handleCheckout} />
         </>
     );
