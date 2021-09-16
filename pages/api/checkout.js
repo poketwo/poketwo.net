@@ -3,7 +3,7 @@ import Stripe from "stripe";
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 const EXTRA_PAYMENT_METHODS = {
-    USD: ["alipay", "wechat_pay"],
+    USD: ["wechat_pay"],
     EUR: ["sepa_debit", "bancontact", "eps", "giropay", "ideal", "p24", "sofort"],
     CAD: ["acss_debit"],
 };
