@@ -4,7 +4,7 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 const EXTRA_PAYMENT_METHODS = {
     USD: ["wechat_pay"],
-    EUR: ["sepa_debit", "bancontact", "eps", "giropay", "ideal", "p24", "sofort"],
+    EUR: ["bancontact", "eps", "giropay", "ideal", "p24", "sofort"],
     CAD: ["acss_debit"],
 };
 
