@@ -9,46 +9,36 @@ const EXTRA_PAYMENT_METHODS = {
 };
 
 export default async (req, res) => {
-    if (req.method === "POST") {
-        const { user, price_id, currency } = req.body;
+    if (req.method !== "POST") return res.status(405).end();
 
-        const customers = await stripe.customers.list({
-            email: user.email,
-            limit: 1,
-        });
+    const { user, price_id, currency } = req.body;
 
-        const customer = {};
-        if (customers["data"].length === 0) {
-            customer["customer_email"] = user.email;
-        } else {
-            customer["customer"] = customers["data"][0].id;
-        }
+    const customers = await stripe.customers.list({
+        email: user.email,
+        limit: 1,
+    });
 
-        const extra_methods = EXTRA_PAYMENT_METHODS[currency] ?? [];
+    const customer = {};
+    if (customers["data"].length === 0) customer["customer_email"] = user.email;
+    else customer["customer"] = customers["data"][0].id;
 
-        const session = await stripe.checkout.sessions.create({
-            mode: "payment",
-            payment_method_types: ["card", ...extra_methods],
-            payment_intent_data: { metadata: { ...user } },
-            payment_method_options: {
-                acss_debit: {
-                    mandate_options: {
-                        payment_schedule: "sporadic",
-                        transaction_type: "personal",
-                    },
-                },
-                wechat_pay: { client: "web" },
-            },
-            metadata: { ...user },
-            line_items: [{ price: price_id, quantity: 1 }],
-            success_url: `${process.env.BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.BASE_URL}/store`,
-            allow_promotion_codes: true,
-            ...customer,
-        });
+    const extra_methods = EXTRA_PAYMENT_METHODS[currency] ?? [];
 
-        res.status(200).json({ id: session.id });
-    } else {
-        res.status(405).end();
-    }
+    const session = await stripe.checkout.sessions.create({
+        mode: "payment",
+        payment_method_types: ["card", ...extra_methods],
+        payment_intent_data: { metadata: { ...user } },
+        payment_method_options: {
+            acss_debit: { mandate_options: { payment_schedule: "sporadic", transaction_type: "personal" } },
+            wechat_pay: { client: "web" },
+        },
+        metadata: { ...user },
+        line_items: [{ price: price_id, quantity: 1 }],
+        success_url: `${process.env.BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${process.env.BASE_URL}/store`,
+        allow_promotion_codes: true,
+        ...customer,
+    });
+
+    res.status(200).json({ id: session.id });
 };
