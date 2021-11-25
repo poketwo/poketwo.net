@@ -1,14 +1,23 @@
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IpregistryClient } from "@ipregistry/client";
 import { loadStripe } from "@stripe/stripe-js";
 import classNames from "classnames";
+import { APIUser } from "discord-api-types";
+import { withIronSessionSsr } from "iron-session/next/dist";
 import Link from "next/link";
 import { useState } from "react";
 import Stripe from "stripe";
-import { withSession } from "../helpers/session";
+import { ironSessionOptions } from "../helpers/session";
+import { stripe } from "../helpers/stripe";
 import styles from "../styles/store.module.scss";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
+
+type Item = {
+    id: string;
+    name: string;
+    amount: number;
+    formatted?: string;
+};
 
 const Banner = () => (
     <div className="section">
@@ -18,7 +27,11 @@ const Banner = () => (
     </div>
 );
 
-const Authentication = ({ user }) => {
+type AuthenticationProps = {
+    user: APIUser | null;
+};
+
+const Authentication = ({ user }: AuthenticationProps) => {
     const authenticated = user !== null;
     let file_ext, avatar_url;
     if (authenticated) {
@@ -26,7 +39,7 @@ const Authentication = ({ user }) => {
             file_ext = user.avatar.startsWith("a_") ? "gif" : "png";
             avatar_url = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${file_ext}`;
         } else {
-            avatar_url = `https://cdn.discordapp.com/embed/avatars/${user.id % 5}.png`;
+            avatar_url = `https://cdn.discordapp.com/embed/avatars/${Number(user.discriminator) % 5}.png`;
         }
     }
     return (
@@ -62,7 +75,13 @@ const Authentication = ({ user }) => {
     );
 };
 
-const Item = ({ name, formatted, selected, onSelect }) => (
+type ItemProps = {
+    item: Item;
+    selected: boolean;
+    onSelect: () => void;
+};
+
+const Item = ({ item, selected, onSelect }: ItemProps) => (
     <div className={classNames("column", styles.item)} onClick={onSelect}>
         <div
             className={classNames({
@@ -70,13 +89,19 @@ const Item = ({ name, formatted, selected, onSelect }) => (
                 "has-background-link-dark": selected,
             })}
         >
-            <p className="title is-4">{name}</p>
-            <p className="subtitle is-5"> {formatted} </p>
+            <p className="title is-4">{item.name}</p>
+            <p className="subtitle is-5">{item.formatted}</p>
         </div>
     </div>
 );
 
-const Items = ({ user, items, onCheckout }) => {
+type ItemsProps = {
+    user: APIUser | null;
+    items: Item[];
+    onCheckout: (item: Item) => void;
+};
+
+const Items = ({ user, items, onCheckout }: ItemsProps) => {
     const [selected, setSelected] = useState(-1);
     const authenticated = user !== null;
 
@@ -85,11 +110,10 @@ const Items = ({ user, items, onCheckout }) => {
             <div className="section">
                 <div className="container has-text-centered">
                     <div className="columns">
-                        {items.map(({ name, formatted }, idx) => (
+                        {items.map((item, idx) => (
                             <Item
-                                name={name}
-                                formatted={formatted}
-                                key={idx}
+                                key={item.id}
+                                item={item}
                                 selected={selected == idx}
                                 onSelect={() => setSelected(idx)}
                             />
@@ -112,56 +136,22 @@ const Items = ({ user, items, onCheckout }) => {
     );
 };
 
-const CurrencySelect = ({ choices, selected, onSelect }) => {
-    const [open, setOpen] = useState(false);
-
-    return (
-        <div className="section py-0">
-            <div className="container has-text-centered">
-                <div className={classNames("dropdown", { "is-active": open })}>
-                    <div className="dropdown-trigger">
-                        <button
-                            className="button"
-                            aria-haspopup="true"
-                            aria-controls="dropdown-menu"
-                            onClick={() => setOpen(!open)}
-                        >
-                            <span>{selected}</span>
-                            <span className="icon is-small">
-                                <FontAwesomeIcon icon={faAngleDown} />
-                            </span>
-                        </button>
-                    </div>
-                    <div className="dropdown-menu" id="dropdown-menu" role="menu">
-                        <div className="dropdown-content has-text-left">
-                            {choices.map(x => (
-                                <a
-                                    key={x}
-                                    className={classNames("dropdown-item", { "is-active": x === selected })}
-                                    onClick={() => {
-                                        onSelect(x);
-                                        setOpen(false);
-                                    }}
-                                >
-                                    {x}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+type StoreProps = {
+    user: APIUser | null;
+    currencies: { [key: string]: Item[] };
+    defaultCurrency: string;
 };
 
-const Store = ({ user, currencies, defaultCurrency }) => {
+const Store = ({ user, currencies, defaultCurrency }: StoreProps) => {
+    console.log(currencies);
     if (!currencies.hasOwnProperty(defaultCurrency)) defaultCurrency = "USD";
 
     const [currency, setCurrency] = useState(defaultCurrency);
     const format = new Intl.NumberFormat(undefined, { currency, style: "currency", maximumFractionDigits: 2 });
 
-    const handleCheckout = async item => {
+    const handleCheckout = async (item: Item) => {
         const stripe = await stripePromise;
+        if (!stripe) return;
 
         const response = await fetch("/api/checkout", {
             method: "POST",
@@ -187,28 +177,33 @@ const Store = ({ user, currencies, defaultCurrency }) => {
             <Banner />
             <Authentication user={user} />
             {/* <CurrencySelect choices={Object.keys(currencies)} selected={currency} onSelect={setCurrency} /> */}
-            <Items user={user} items={items} currency={currency} onCheckout={handleCheckout} />
+            <Items user={user} items={items} onCheckout={handleCheckout} />
         </>
     );
 };
 
 export default Store;
 
-export const getServerSideProps = withSession(async ({ req }) => {
+export const getServerSideProps = withIronSessionSsr<StoreProps>(async ({ req }) => {
     // Get products
 
-    const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
-
     const productsData = await stripe.products.list({ active: true });
-    const products = productsData["data"].reduce((a, x) => ({ ...a, [x["id"]]: x }), {});
     const prices = await stripe.prices.list({ active: true, limit: 100 });
+    const products = productsData["data"].reduce<Map<string, Stripe.Product>>((acc, x) => {
+        acc.set(x.id, x);
+        return acc;
+    }, new Map());
 
-    const currencies = prices.data.reduce((acc, price) => {
+    const currencies = prices.data.reduce<{ [key: string]: Item[] }>((acc, price) => {
         const curr = price.currency.toUpperCase();
         const prev = acc[curr] ?? [];
-        acc[curr] = [...prev, { id: price.id, name: products[price.product].name, amount: price.unit_amount }].sort(
-            (a, b) => a.amount - b.amount
-        );
+        let product = typeof price.product === "string" ? products.get(price.product) : price.product;
+        if (product && !product.deleted && price.unit_amount) {
+            const item: Item = { id: price.id, name: product.name, amount: price.unit_amount };
+            prev.push(item);
+            prev.sort((a, b) => a.amount - b.amount);
+            acc[curr] = prev;
+        }
         return acc;
     }, {});
 
@@ -217,19 +212,18 @@ export const getServerSideProps = withSession(async ({ req }) => {
     let defaultCurrency = "USD";
 
     try {
-        const ipregistry = new IpregistryClient(process.env.IPREGISTRY_API_KEY);
-        const ip = req.headers["x-real-ip"] || req.connection.remoteAddress;
+        const ipregistry = new IpregistryClient(process.env.IPREGISTRY_API_KEY as string);
+        const ip = req.headers["x-real-ip"];
+        if (typeof ip !== "string") throw new Error();
         const response = await ipregistry.lookup(ip);
-        defaultCurrency = response.data.currency.code;
+        defaultCurrency = response.data.currency.code ?? "USD";
     } catch {}
 
     return {
         props: {
-            user: req.session.get("user") ?? null,
+            user: req.session.user ?? null,
             currencies,
             defaultCurrency,
         },
     };
-});
-
-import { IpregistryClient } from "@ipregistry/client";
+}, ironSessionOptions);
