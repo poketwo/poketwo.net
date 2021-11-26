@@ -1,13 +1,20 @@
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 
-module.exports = withPlugins([
+module.exports = withPlugins(
     [
-        optimizedImages,
-        {
-            responsive: {
-                adapter: require("responsive-loader/sharp"),
+        [
+            optimizedImages,
+            {
+                responsive: {
+                    adapter: require("responsive-loader/sharp"),
+                },
             },
-        },
+        ],
     ],
-]);
+    {
+        images: {
+            domains: ["assets.poketwo.net"],
+        },
+    }
+);
