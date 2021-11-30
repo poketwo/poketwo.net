@@ -111,7 +111,7 @@ export async function getStaticProps(context) {
                     {
                         name: "Hyperbub#9000",
                         image:
-                            "https://cdn.discordapp.com/avatars/361759504422928387/a_10c9ab3d1f0b94f126a61c67b64d5029.gif",
+                            "https://cdn.discordapp.com/avatars/361759504422928387/a_10c9ab3d1f0b94f126a61c67b64d5029.png",
                         secondary: "Administrator",
                     },
                     {
@@ -165,7 +165,7 @@ export async function getStaticProps(context) {
                     {
                         name: "Felix Zhan#8215",
                         image:
-                            "https://cdn.discordapp.com/avatars/424590449164943371/a_43d3c9c3ba4a0daf35d7969861e9113c.gif",
+                            "https://cdn.discordapp.com/avatars/424590449164943371/a_43d3c9c3ba4a0daf35d7969861e9113c.png",
                         secondary: "Moderator",
                     },
                     {
@@ -183,7 +183,7 @@ export async function getStaticProps(context) {
                     {
                         name: "Josh__RL#0001",
                         image:
-                            "https://cdn.discordapp.com/avatars/113754480519938052/a_75caaf1ca64c20e71d1f86c8d69ab0ce.gif",
+                            "https://cdn.discordapp.com/avatars/113754480519938052/a_75caaf1ca64c20e71d1f86c8d69ab0ce.png",
                         secondary: "Moderator",
                     },
                     {
