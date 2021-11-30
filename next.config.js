@@ -14,7 +14,7 @@ module.exports = withPlugins(
     ],
     {
         images: {
-            domains: ["assets.poketwo.net", "cdn.discordapp.com"],
+            domains: ["assets.poketwo.net", "cdn.discordapp.com", "i.imgur.com"],
         },
     }
 );
