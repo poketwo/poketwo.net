@@ -99,7 +99,7 @@ export async function getStaticProps(context) {
                         name: "Oliver#0001",
                         image:
                             "https://cdn.discordapp.com/avatars/398686833153933313/9a4a1b521bbe3f9d0f3e5da2f659ad93.png",
-                        secondary: "CEO",
+                        secondary: "Executive Director",
                     },
                 ],
                 [
