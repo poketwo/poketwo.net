@@ -105,8 +105,7 @@ export async function getStaticProps(context) {
                 [
                     {
                         name: "Dagger_Mace#5953",
-                        image:
-                            "https://cdn.discordapp.com/avatars/611659645760831506/7c67ca4c442b5e55f4b21bfe08b8b2b9.png",
+                        image: "https://i.imgur.com/dNUdlPc.png",
                         secondary: "Administrator",
                     },
                     {
