@@ -146,8 +146,7 @@ export async function getStaticProps(context) {
                 [
                     {
                         name: "Alkinus#3747",
-                        image:
-                            "https://cdn.discordapp.com/avatars/189845053101965312/695fba1d6871782305f38e63bf412dee.png",
+                        image: "https://i.imgur.com/3APWurT.png",
                         secondary: "Moderator",
                     },
                     {
