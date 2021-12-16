@@ -9,13 +9,12 @@ import {
     faPaw,
     faRobot,
     faStar,
-    faUsers,
+    faUsers
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import Image from "next/image";
 import useSWR from "swr";
-import MSFModal from "../components/MSFModal";
 import styles from "../styles/index.module.scss";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
@@ -191,7 +190,6 @@ const Index = () => (
             <Features />
             <CTA />
         </main>
-        <MSFModal />
     </>
 );
 
