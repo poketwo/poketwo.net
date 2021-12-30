@@ -224,7 +224,7 @@ export async function getStaticProps(context) {
                     {
                         name: "Zerx#6365",
                         image:
-                            "https://cdn.discordapp.com/avatars/765624811841519697/b2ed4e414ceaeb5b7b2860eea34e84dc.png",
+                            "https://cdn.discordapp.com/avatars/765624811841519697/dd5cd5b7bacf7d9635c2c714873f59b5.png",
                         secondary: "Moderator",
                     },
                     {
