@@ -205,8 +205,7 @@ export async function getStaticProps(context) {
                     },
                     {
                         name: "SuperJedi224#2591",
-                        image:
-                            "https://cdn.discordapp.com/avatars/304098467192635392/31154f736eace93377f25dfb5361c819.png",
+                        image: "https://i.imgur.com/Bv1L7nu.png",
                         secondary: "Moderator",
                     },
                     {
