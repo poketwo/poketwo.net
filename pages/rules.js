@@ -3,7 +3,7 @@ import Link from "next/link";
 const Banner = () => (
     <div className="section">
         <div className="container has-text-centered">
-            <p className="title is-2">Community Rules</p>
+            <p className="title is-2">Server Rules</p>
         </div>
     </div>
 );
@@ -78,7 +78,7 @@ const RulesText = () => (
             </p>
             <h2>Attribution</h2>
             <p>
-                Portions of these Community Rules are adapted from the{" "}
+                Portions of these Server Rules are adapted from the{" "}
                 <a href="https://pythondiscord.com/pages/rules/">Python Discord Rules.</a>
             </p>
         </div>
