@@ -7,7 +7,7 @@ const Banner = () => (
     </div>
 );
 
-const Terms = () => (
+const Content = () => (
     <div className="content">
         <h2>Introduction</h2>
         <p>
@@ -139,7 +139,7 @@ const Terms = () => (
             <div className="container">
                 <div className="columns">
                     <div className="column is-8-desktop is-offset-2-desktop">
-                        <Terms />
+                        <Content />
                     </div>
                 </div>
             </div>
