@@ -3,8 +3,14 @@ import { ironSessionOptions } from "../../helpers/session";
 import { checkout } from "../../helpers/stripe";
 
 const handler = withIronSessionApiRoute(async (req, res) => {
-    if (req.method !== "POST") return res.status(405).end();
-    if (!req.session.user) return res.status(401).send("Missing session data");
+    if (req.method !== "POST") {
+        res.status(405).end();
+        return;
+    }
+    if (!req.session.user) {
+        res.status(401).send("Missing session data");
+        return;
+    }
 
     const { price_id, currency } = req.body;
 
