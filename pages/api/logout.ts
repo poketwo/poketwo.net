@@ -1,4 +1,4 @@
-import { withIronSessionApiRoute } from "iron-session/next/dist";
+import { withIronSessionApiRoute } from "iron-session/next";
 import { ironSessionOptions } from "../../helpers/session";
 
 const handler = withIronSessionApiRoute(async (req, res) => {
