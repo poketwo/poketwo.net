@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { withIronSessionApiRoute } from "iron-session/next/dist";
+import { withIronSessionApiRoute } from "iron-session/next";
 import oauth from "../../helpers/oauth";
 import { ironSessionOptions } from "../../helpers/session";
 
