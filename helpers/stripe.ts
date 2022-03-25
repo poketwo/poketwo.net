@@ -2,9 +2,9 @@ import { APIUser } from "discord-api-types/v9";
 import Stripe from "stripe";
 
 const EXTRA_PAYMENT_METHODS: { [key: string]: Stripe.Checkout.SessionCreateParams.PaymentMethodType[] } = {
-    USD: ["wechat_pay"],
-    EUR: ["bancontact", "eps", "giropay", "ideal", "p24", "sofort"],
-    CAD: ["acss_debit"],
+    USD: [],
+    EUR: ["bancontact", "eps", "giropay", "ideal", "p24"],
+    CAD: [],
 };
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: "2020-08-27" });
