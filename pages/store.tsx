@@ -2,7 +2,7 @@ import { IpregistryClient } from "@ipregistry/client";
 import { loadStripe } from "@stripe/stripe-js";
 import classNames from "classnames";
 import { APIUser } from "discord-api-types";
-import { withIronSessionSsr } from "iron-session/next/dist";
+import { withIronSessionSsr } from "iron-session/next";
 import Link from "next/link";
 import { useState } from "react";
 import Stripe from "stripe";
@@ -143,7 +143,6 @@ type StoreProps = {
 };
 
 const Store = ({ user, currencies, defaultCurrency }: StoreProps) => {
-    console.log(currencies);
     if (!currencies.hasOwnProperty(defaultCurrency)) defaultCurrency = "USD";
 
     const [currency, setCurrency] = useState(defaultCurrency);
