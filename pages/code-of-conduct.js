@@ -78,7 +78,7 @@ const COCText = () => (
             <h2>Attribution</h2>
             <p>
                 This Code of Conduct is adapted from the{" "}
-                <a href="https://github.com/adafruit/Adafruit_Community_Code_of_Conduct/blob/master/code-of-conduct.md">
+                <a href="https://github.com/adafruit/Adafruit_Community_Code_of_Conduct/blob/main/code-of-conduct.md">
                     Adafruit Community Code of Conduct.
                 </a>
             </p>
