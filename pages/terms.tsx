@@ -225,6 +225,13 @@ const Content = () => (
             modifications to the Terms constitutes your agreement to those changes. If you object to the changes, please
             do not continue using the Services.
         </p>
+
+        <h2>Contacting Us</h2>
+        <p>
+            In the case of any questions or concerns regarding these Terms of Service, please send a message to
+            <a href="mailto:support@poketwo.net">support@poketwo.net</a>, and we will do our best to resolve your
+            concerns.
+        </p>
     </div>
 );
 
