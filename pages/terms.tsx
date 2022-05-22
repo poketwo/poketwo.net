@@ -51,20 +51,27 @@ const Content = () => (
             <li>interferes or attempts to interrupt the proper operation of the Services;</li>
             <li>exploits or publicly informs other members of any error or bug which gives an unintended advantage;</li>
             <li>
-                involves programs or operations designed to resemble legitimate parts of the Services to deceive other
-                users;
+                involves programs or operations designed to falsely resemble or impersonate the Services to deceive
+                other users;
             </li>
             <li>involves the development, distribution, or use of unacceptable software programs (as listed below);</li>
             <li>
                 involves the unapproved exchange of Virtual Currency or Virtual Goods (as defined below) outside the
                 Services; or
             </li>
-            <li>condones, benefits from, or is otherwise in connection with any person who violates these Terms.</li>
+            <li>
+                condones, benefits from, or is otherwise associated or in connection with any person who violates these
+                Terms.
+            </li>
         </ul>
         <p>
             We reserve the right to terminate or suspend your access to the Services immediately, without prior notice,
             and under our sole discretion, for any or no reason whatsoever, including, without limitation, a violation
             of any of the foregoing, or any other behavior deemed a violation of the Terms of Service.
+        </p>
+        <p>
+            If you are unsure whether an action may violate the Terms of Service, please contact the Company for
+            pre-approval.
         </p>
         <h4>Acceptable Software Programs</h4>
         <p>
