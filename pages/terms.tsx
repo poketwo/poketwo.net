@@ -50,6 +50,10 @@ const Content = () => (
             </li>
             <li>interferes or attempts to interrupt the proper operation of the Services;</li>
             <li>exploits or publicly informs other members of any error or bug which gives an unintended advantage;</li>
+            <li>
+                involves programs or operations designed to resemble legitimate parts of the Services to deceive other
+                users;
+            </li>
             <li>involves the development, distribution, or use of unacceptable software programs (as listed below);</li>
             <li>
                 involves the unapproved exchange of Virtual Currency or Virtual Goods (as defined below) outside the
@@ -97,11 +101,17 @@ const Content = () => (
                 the exchange of Virtual Currency or Virtual Goods for traditional currency, such as the U.S. Dollar;
             </li>
             <li>the exchange of Virtual Currency or Virtual Goods for cryptocurrency, such as Bitcoin or Ethereum;</li>
-            <li>the exchange of Virtual Currency or Virtual Goods for any other paper or digital currency;</li>
+            <li>the exchange of Virtual Currency or Virtual Goods for any other paper or digital currency; and</li>
             <li>
                 the exchange of Virtual Currency or Virtual Goods for currencies, goods, and other items within
                 unapproved third-party services (as listed below), including, but not limited to, social media
-                platforms, games, and other Discord bots;
+                platforms, games, and other Discord bots.
+                <ul>
+                    <li>
+                        An exception to the foregoing rule shall be made in cases where Virtual Currency or Virtual
+                        Goods are compensated as an incentive for users to use Discord's "server boosting" feature.
+                    </li>
+                </ul>
             </li>
         </ul>
         <p>
