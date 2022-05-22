@@ -100,7 +100,7 @@ const Content = () => (
             <li>the exchange of Virtual Currency or Virtual Goods for any other paper or digital currency;</li>
             <li>
                 the exchange of Virtual Currency or Virtual Goods for currencies, goods, and other items within
-                unapproved (as listed below) third-party services, including, but not limited to, social media
+                unapproved third-party services (as listed below), including, but not limited to, social media
                 platforms, games, and other Discord bots;
             </li>
         </ul>
@@ -194,7 +194,7 @@ const Content = () => (
         <p>
             To ensure maximum performance and level of service, the Company reserves the right to interrupt the
             operation of the Services for maintenance at any time, informing users appropriately. The Company may also
-            decide to terminate the Services altogether at any time. If the Service are terminated, the Company will
+            decide to terminate the Services altogether at any time. If the Services are terminated, the Company will
             cooperate with users to enable them to withdraw personal data in accordance with the law.
         </p>
         <p>Additionally, the Services may not be available due to reasons outside the Company's reasonable control.</p>
