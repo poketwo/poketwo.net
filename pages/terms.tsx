@@ -59,15 +59,14 @@ const Content = () => (
                 involves the unapproved exchange of Virtual Currency or Virtual Goods (as defined below) outside the
                 Services; or
             </li>
-            <li>
-                condones, benefits from, or is otherwise associated or in connection with any person who violates these
-                Terms.
-            </li>
+            <li>condones, benefits from, or is otherwise in connection with any person who violates these Terms.</li>
         </ul>
         <p>
             We reserve the right to terminate or suspend your access to the Services immediately, without prior notice,
             and under our sole discretion, for any or no reason whatsoever, including, without limitation, a violation
-            of any of the foregoing, or any other behavior deemed a violation of the Terms of Service.
+            of any of the foregoing, any other behavior deemed a violation of the Terms of Service, or sufficient reason
+            to believe you have willingly and knowingly supported or condoned behavior from another user that violated
+            the Terms of Service.
         </p>
         <p>
             If you are unsure whether an action may violate the Terms of Service, please contact the Company for
