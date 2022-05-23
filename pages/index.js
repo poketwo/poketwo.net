@@ -57,7 +57,7 @@ const Banner = () => {
                                 <span className="icon">
                                     <FontAwesomeIcon icon={faDiscord} />
                                 </span>
-                                <span>Join Official Server</span>
+                                <span>Join Community</span>
                             </a>
                         </div>
                         <p style={{ opacity: data ? 1 : 0, transition: "opacity 0.3s" }}>

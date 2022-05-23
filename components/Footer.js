@@ -49,17 +49,23 @@ const Footer = () => (
                 </div>
                 <div className="column is-2-widescreen">
                     <p className="title is-5 mb-2">Pokétwo</p>
-                    <FooterLink href="/">Home</FooterLink>
-                    <FooterLink href="/people">People</FooterLink>
-                    <FooterLink href="/store">Store</FooterLink>
+                    <FooterLink href="https://discord.gg/poketwo-poketwo" external>
+                        Support Server
+                    </FooterLink>
                     <FooterLink href="https://github.com/oliver-ni/poketwo" external>
                         Source Code
+                    </FooterLink>
+                    <FooterLink href="/terms" external>
+                        Terms of Service
+                    </FooterLink>
+                    <FooterLink href="/privacy" external>
+                        Privacy Policy
                     </FooterLink>
                 </div>
                 <div className="column is-2-widescreen">
                     <p className="title is-5 mb-2">Community</p>
                     <FooterLink href="https://discord.gg/poketwo" external>
-                        Discord Server
+                        Community Server
                     </FooterLink>
                     <FooterLink href="/rules">Community Rules</FooterLink>
                     <FooterLink href="/code-of-conduct" external>
