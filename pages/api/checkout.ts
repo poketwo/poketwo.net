@@ -15,7 +15,6 @@ const handler = withIronSessionApiRoute(async (req, res) => {
     const { price_id, currency } = req.body;
 
     const session = await checkout({
-        currency,
         user: req.session.user,
         line_items: [{ price: price_id, quantity: 1 }],
         success_url: `${process.env.BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
