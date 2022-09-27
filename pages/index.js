@@ -20,7 +20,7 @@ import styles from "../styles/index.module.scss";
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const Banner = () => {
-    const { data } = useSWR("/api/db/stats", fetcher);
+    const { data } = useSWR("https://webhooks.poketwo.io/stats", fetcher);
 
     return (
         <header className={classNames("section", styles.banner)} id="main">
