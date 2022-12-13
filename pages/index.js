@@ -19,6 +19,24 @@ import styles from "../styles/index.module.scss";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
+const Outage = () => (
+    <div className="section">
+        <div className="container">
+            <div className="columns">
+                <div className="column is-8-desktop is-offset-2-desktop has-text-centered">
+                    <div className="notification is-danger has-text-left">
+                        <strong>Pokétwo is currently experiencing a major outage.</strong> Three of our servers need
+                        maintainence. Unfortunately, it's finals week for me, so I have less time to dedicate, and I'm
+                        also waiting on our hosting provider to get back to us regarding some details. Join the
+                        community server for updates regarding the outage!
+                        <div className="has-text-right">— Oliver</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
 const Banner = () => {
     const { data } = useSWR("https://webhooks.poketwo.io/stats", fetcher);
 
@@ -185,6 +203,7 @@ const CTA = () => (
 
 const Index = () => (
     <>
+        <Outage />
         <Banner />
         <main>
             <Features />
