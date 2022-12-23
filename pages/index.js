@@ -203,7 +203,6 @@ const CTA = () => (
 
 const Index = () => (
     <>
-        <Outage />
         <Banner />
         <main>
             <Features />
