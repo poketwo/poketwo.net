@@ -78,10 +78,10 @@ const Banner = () => {
                                 <span>Join Community</span>
                             </a>
                         </div>
-                        <p style={{ opacity: data ? 1 : 0, transition: "opacity 0.3s" }}>
+                        {/* <p style={{ opacity: data ? 1 : 0, transition: "opacity 0.3s" }}>
                             Serving <b>{data?.users?.toLocaleString()}</b> registered users in{" "}
                             <b>{data?.servers.toLocaleString()}</b> servers
-                        </p>
+                        </p> */}
                     </div>
                 </div>
             </div>
