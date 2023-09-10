@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import Image from "next/image";
 import { Fragment, useMemo } from "react";
 import NoSSR from "react-no-ssr";
@@ -11,14 +10,8 @@ const Banner = () => (
     </div>
 );
 
-const TeamMember = ({ name, secondary, image, small = false }) => (
-    <div
-        className={classNames(
-            "column",
-            !small && "is-6-tablet is-4-desktop is-3-widescreen",
-            small && "is-4-tablet is-3-desktop is-3-widescreen"
-        )}
-    >
+const TeamMember = ({ name, secondary, image }) => (
+    <div className="column is-6-tablet is-4-desktop is-3-widescreen">
         <div className="box p-4 has-shadow h-100 is-flex is-flex-direction-column is-justify-content-center">
             <NoSSR>
                 <div className="card-content p-0">
@@ -30,7 +23,7 @@ const TeamMember = ({ name, secondary, image, small = false }) => (
                                 </figure>
                             </div>
                         )}
-                        <div className={classNames("column", small && "has-text-centered")}>
+                        <div className="column">
                             {name && <p className="title is-5">{name.split("#").join("\u200b#")}</p>}
                             {secondary && (
                                 <p className="subtitle has-text-grey is-6">
@@ -50,43 +43,23 @@ const TeamMember = ({ name, secondary, image, small = false }) => (
     </div>
 );
 
-const Section = ({ title, members, small = false }) => {
-    const randomized = useMemo(() =>
-        members.map(x =>
-            [...x].sort(function () {
-                return 0.5 - Math.random();
-            })
-        )
-    );
-    const Wrapper = small
-        ? ({ children }) => (
-              <div className="columns">
-                  <div className="column is-10-widescreen is-offset-1-widescreen">{children}</div>
-              </div>
-          )
-        : React.Fragment;
+const Team = ({ people }) => {
+    const rand = () => 0.5 - Math.random();
+    const randomized = useMemo(() => people.map(x => [...x].sort(rand)));
+
     return (
-        <div className="section">
-            <div className="container">
-                <Wrapper>
-                    <p className="title has-text-centered mb-6">{title}</p>
+        <>
+            <Banner />
+            <div className="section">
+                <div className="container">
                     <div className="columns is-multiline is-centered">
-                        {randomized.map(section => section.map(x => <TeamMember {...x} key={x.name} small={small} />))}
+                        {randomized.map(section => section.map(x => <TeamMember {...x} key={x.name} />))}
                     </div>
-                </Wrapper>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
-
-const Team = ({ people, retired, other }) => (
-    <>
-        <Banner />
-        <Section title="Staff Team" members={people} />
-        <Section title="Retired Staff" members={retired} />
-        <Section title="Other Significant Contributors" members={other} small />
-    </>
-);
 
 export default Team;
 
@@ -96,210 +69,170 @@ export async function getStaticProps(context) {
             people: [
                 [
                     {
-                        name: "Oliver#0001",
-                        image: "https://i.imgur.com/2aQWGZA.png",
-                        secondary: "Executive Director",
+                        name: "oliver#0",
+                        image: "https://cdn.discordapp.com/avatars/398686833153933313/9479680c069c3cc837bc965bf17226c9.png?size=1024",
+                        secondary: "Admin\nDevelopment Lead",
+                    },
+                    {
+                        name: "hyperbub#0",
+                        image: "https://cdn.discordapp.com/avatars/361759504422928387/fb3ed0c52bba5880b4889380dfab008a.png?size=1024",
+                        secondary: "Admin\nHuman Resources Lead",
+                    },
+                    {
+                        name: "anoea#0",
+                        image: "https://cdn.discordapp.com/avatars/285861483412193280/5acba460c4de33cc3628609091f23975.png?size=1024",
+                        secondary: "Admin\nContent & Artwork Lead",
                     },
                 ],
                 [
                     {
-                        name: "Taffy#3090",
-                        image: "https://i.imgur.com/QlFFSMT.png",
+                        name: "witherr.#0",
+                        image: "https://cdn.discordapp.com/avatars/267550284979503104/3404048356c9b53a2f846730852432aa.png?size=1024",
+                        secondary: "Admin\nDeveloper",
+                    },
+                ],
+                [
+                    {
+                        name: "somebluepigeon#0",
+                        image: "https://cdn.discordapp.com/avatars/711892049842012190/6659658f17f89a4aff3f2b2bf11a0de7.png?size=1024",
+                        secondary: "Admin\nModerator",
+                    },
+                    {
+                        name: "dagger_mace#0",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/611659645760831506/avatars/af615152155dea331db75e54a08c3018.png?size=1024",
+                        secondary: "Admin\nModerator",
+                    },
+                ],
+                [
+                    {
+                        name: "berkeley.edu#0",
+                        image: "https://cdn.discordapp.com/avatars/138498458075136000/d8e2ab371ab85c7cd19f6eb5d155baa1.png?size=1024",
                         secondary: "Admin",
                     },
+                ],
+                [
                     {
-                        name: "sunflower#0159",
-                        image: "https://i.imgur.com/7EWMkx2.png",
-                        secondary: "Head of Staff",
-                    },
-                    {
-                        name: "Dagger_Mace#5953",
-                        image: "https://i.imgur.com/dNUdlPc.png",
-                        secondary: "Admin",
-                    },
-                    {
-                        name: "Hyperbub#9000",
-                        image: "https://i.imgur.com/YyGN2FT.png",
-                        secondary: "Admin",
+                        name: "metspek#0",
+                        image: "https://cdn.discordapp.com/avatars/243763234685976577/a_a50de0fddb611b7d3cb511ed5c77fe25.gif?size=1024",
+                        secondary: "Developer\nModerator",
                     },
                 ],
                 [
                     {
-                        name: "Anoea#3441",
-                        image: "https://i.imgur.com/uppdW1a.png",
-                        secondary: "Community Manager\nArtwork Director",
+                        name: "skiparoo#0",
+                        image: "https://cdn.discordapp.com/avatars/97104885337575424/02ee2c24d827d32d481db0f160d0a175.png?size=1024",
+                        secondary: "Developer",
                     },
                 ],
                 [
                     {
-                        name: "BlueLego#2332",
-                        image: "https://i.imgur.com/xBPWYPz.png",
-                        secondary: "Community Manager",
+                        name: "echogecko.#0",
+                        image: "https://cdn.discordapp.com/avatars/386482648945524738/e02cfa7d77f93cc5af8018a3cb3a9815.png?size=1024",
+                        secondary: "Moderator\nContent & Artwork Team",
+                    },
+                    {
+                        name: "a_spect#0",
+                        image: "https://cdn.discordapp.com/avatars/651131088219144232/2067702fd6c3fc2f19363fadce761345.png?size=1024",
+                        secondary: "Moderator\nContent & Artwork Team",
+                    },
+                    {
+                        name: "saerauh#0",
+                        image: "https://cdn.discordapp.com/avatars/903797931533025310/0f1159b76fcb4771fdb2ccf3756b29b4.png?size=1024",
+                        secondary: "Moderator\nContent & Artwork Team",
+                    },
+                    {
+                        name: "foxrii_#0",
+                        image: "https://cdn.discordapp.com/avatars/850079219681722398/b1660925451d6bd65d13ac783369bba9.png?size=1024",
+                        secondary: "Moderator\nContent & Artwork Team",
+                    },
+                    {
+                        name: "fuzzwuzz#0",
+                        image: "https://cdn.discordapp.com/avatars/825499845070028800/8c845d5f8662e4cd7a6faa2ef34b8895.png?size=1024",
+                        secondary: "Moderator\nContent & Artwork Team",
+                    },
+                    {
+                        name: "bren.__.#0",
+                        image: "https://cdn.discordapp.com/avatars/336148113465278464/4a21f0caffcb49991d0a3b9efb3c1657.png?size=1024",
+                        secondary: "Moderator\nContent & Artwork Team",
                     },
                 ],
                 [
                     {
-                        name: "SuperJedi224#2591",
-                        image: "https://i.imgur.com/Bv1L7nu.png",
+                        name: ".lime_.#0",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/554611606492020737/avatars/993b2df23bcbaabe4b3f4d50895fd31e.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Alkinus#3747",
-                        image: "https://i.imgur.com/3APWurT.png",
+                        name: "lesbians.#0",
+                        image: "https://cdn.discordapp.com/avatars/517063415613751337/1796a71c7ac6312d3f5355a88085a21c.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "BluBambii | Jess#6814",
-                        image: "https://i.imgur.com/vlXnx3v.png",
+                        name: "angeljanin#0",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/874420399608332370/avatars/ad7c2c257651f5d97dfbef8481461260.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Zerx#6365",
-                        image: "https://i.imgur.com/gJKdMld.png",
+                        name: "ellewoods.#0",
+                        image: "https://cdn.discordapp.com/avatars/470615071035359262/a38b8b668bf5e0b91e938910741b31b2.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Josh__RL#0001",
-                        image: "https://i.imgur.com/WPWl5eW.gif",
+                        name: "haltfire302#0",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/130438329484181504/avatars/9d874e2cec7ed868a3a30119358c9df4.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Knash#2471",
-                        image: "https://i.imgur.com/4t2ttJo.png",
+                        name: "imperatorjordy#0",
+                        image: "https://cdn.discordapp.com/avatars/349284248840175617/c29fd71f486741d2a575a52af8455bff.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Kuru Kuru#8368",
-                        image: "https://i.imgur.com/6W0yvNg.gif",
+                        name: "felixzhan#0",
+                        image: "https://cdn.discordapp.com/avatars/424590449164943371/a_43d3c9c3ba4a0daf35d7969861e9113c.gif?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "MaRc#0001",
-                        image: "https://i.imgur.com/WhYWYYu.png",
+                        name: "haloboy_#0",
+                        image: "https://cdn.discordapp.com/avatars/808227231376736267/b5d475cb3350555f998ac437a138f11c.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Witherr🖤#5417",
-                        image: "https://i.imgur.com/rYYF0MV.png",
+                        name: "jynxerso#0",
+                        image: "https://cdn.discordapp.com/avatars/449792537272516628/e00adbf642cc97e68313742ccae04774.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Var_Monke#1354",
-                        image: "https://i.imgur.com/x7DeA5H.png",
+                        name: "astra._.xx#0",
+                        image: "https://cdn.discordapp.com/avatars/596583995463172106/0b91a9fe28e5c11806412f97eaa7273d.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "FBCB#3544",
-                        image: "https://i.imgur.com/y3Bg4Cr.png",
+                        name: "marc614#0",
+                        image: "https://cdn.discordapp.com/avatars/906333339080884235/a_b684fde22c4ba2e75f064af4a186f6e1.gif?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Sept#8911",
-                        image: "https://i.imgur.com/jqEMq1u.png",
+                        name: ".data.#0",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/450646613682159647/avatars/a_d9cefa0edf36c3bbef0d89621863ee67.gif?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "Yiqii#6383",
-                        image: "https://i.imgur.com/Pade7Tz.png",
+                        name: "var_monke#0",
+                        image: "https://cdn.discordapp.com/avatars/857103603130302514/4bcdd76fb2be2e88f61008ff285dad7b.png?size=1024",
                         secondary: "Moderator",
                     },
-                ],
-            ],
-            retired: [
-                [
                     {
-                        name: "Crunchy#1123",
-                        image: "https://i.imgur.com/bcyAGiT.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "BOO#3680",
-                        image: "https://i.imgur.com/ono5iSJ.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "Harv#0850",
-                        image: "https://cdn.discordapp.com/embed/avatars/0.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "Godslayer#6969",
-                        image: "https://i.imgur.com/SuXLBOm.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "Leviquackerman#1611",
-                        image: "https://i.imgur.com/DXqWZRM.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "amie#1273",
-                        image: "https://i.imgur.com/gLvj9gs.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "fzhan#8215",
-                        image: "https://i.imgur.com/6WoNAi2.gif",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "kooqer#2227",
-                        image: "https://i.imgur.com/H8HWbGv.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "rawl#3097",
-                        image: "https://i.imgur.com/2EptkGS.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "FAMNIG HJÄRTA#5506",
-                        image: "https://i.imgur.com/b8e5Ks1.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "bell#2796",
-                        image: "https://i.imgur.com/NAwB27g.png",
-                        secondary: "Retired Staff",
-                    },
-                    {
-                        name: "Haltfire302#9839",
-                        image: "https://i.imgur.com/EZ6cQdU.png",
-                        secondary: "Retired Staff",
-                    },
-                ],
-            ],
-            other: [
-                [
-                    {
-                        name: "keelay#0001",
-                        secondary: "Development",
+                        name: "yiqii#0",
+                        image: "https://cdn.discordapp.com/avatars/297842109514383360/28e423b135688886d32647ff48865bc6.png?size=1024",
+                        secondary: "Moderator",
                     },
                 ],
                 [
                     {
-                        name: "Cinnabun#6204",
-                        secondary: "Art",
-                    },
-                    {
-                        name: "Haltfire302#9839",
-                        secondary: "Art",
-                    },
-                    {
-                        name: "Anoea#3441",
-                        secondary: "Art",
-                    },
-                    {
-                        name: "HiroWilde#0359",
-                        secondary: "Art",
-                    },
-                    {
-                        name: "Gaurav#2388",
-                        secondary: "Art",
-                    },
-                    {
-                        name: "Alkinus#3747",
-                        secondary: "Art",
+                        name: "krisppykreme#0",
+                        image: "https://cdn.discordapp.com/avatars/182301129231695872/a_bef3265d9cd8d893ce706def2e2280a0.gif?size=1024",
+                        secondary: "Content & Artwork Team",
                     },
                 ],
             ],
