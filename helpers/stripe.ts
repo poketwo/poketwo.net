@@ -27,23 +27,25 @@ export const checkout = async ({ user, line_items, success_url, cancel_url }: Ch
         customer = { customer_email: user.email };
     }
 
+    const metadata = {
+        accent_color: user.accent_color ?? null,
+        avatar: user.avatar,
+        banner: user.banner ?? null,
+        discriminator: user.discriminator,
+        email: user.email ?? null,
+        flags: user.flags ?? null,
+        id: user.id,
+        locale: user.locale ?? null,
+        premium_type: user.premium_type ?? null,
+        public_flags: user.public_flags ?? null,
+        username: user.username,
+    };
+
     return await stripe.checkout.sessions.create({
         mode: "payment",
         allow_promotion_codes: true,
-        payment_intent_data: { metadata: { ...(user as any) } },
-        metadata: {
-            accent_color: user.accent_color ?? null,
-            avatar: user.avatar,
-            banner: user.banner ?? null,
-            discriminator: user.discriminator,
-            email: user.email ?? null,
-            flags: user.flags ?? null,
-            id: user.id,
-            locale: user.locale ?? null,
-            premium_type: user.premium_type ?? null,
-            public_flags: user.public_flags ?? null,
-            username: user.username,
-        },
+        payment_intent_data: { metadata },
+        metadata,
         line_items,
         success_url,
         cancel_url,
