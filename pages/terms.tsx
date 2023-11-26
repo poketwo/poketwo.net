@@ -139,7 +139,6 @@ const Content = () => (
         </p>
         <ul>
             <li>P2HB (Discord bot, Application ID: 818706022675120138)</li>
-            <li>Pokétox (Discord bot, Application ID: 875526899386953779)</li>
         </ul>
 
         <h2>Terms and Conditions of Sale</h2>
