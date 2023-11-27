@@ -15,8 +15,8 @@ const Content = () => (
         <p>The following information is stored by the Services solely for the their proper operation:</p>
         <ul>
             <li>
-                Discord user, server, and channel identifiers, to associate you, your channels, and your servers, with
-                your configuration and assets within the Services;
+                Discord user, server, and channel names and identifiers, to associate you, your channels, and your
+                servers, with your configuration and assets within the Services;
             </li>
             <li>
                 user-supplied content, including, but not limited to, text for nicknames, bot prefixes, location
