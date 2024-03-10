@@ -81,110 +81,86 @@ export async function getStaticProps(context) {
                     {
                         name: "@anoea",
                         image: "https://cdn.discordapp.com/avatars/285861483412193280/5d81a02bbe4670967cb5baf8c3eb4b40.png?size=1024",
-                        secondary: "Admin\nContent & Artwork Lead",
+                        secondary: "Admin\nEvent Team Lead",
                     },
                 ],
                 [
                     {
                         name: "@witherr.",
-                        image: "https://cdn.discordapp.com/avatars/267550284979503104/6012b7aa3d8fa7659ca2756a59507d58.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/267550284979503104/00ef012f18f5960227fcfe7cf9443a6a.png?size=1024",
                         secondary: "Admin\nDeveloper",
                     },
                 ],
                 [
                     {
-                        name: "@somebluepigeon",
-                        image: "https://cdn.discordapp.com/avatars/711892049842012190/1662a447c3e34021aec39faa9133909e.png?size=1024",
-                        secondary: "Admin\nModerator",
-                    },
-                    {
-                        name: "@dagger_mace",
-                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/611659645760831506/avatars/af615152155dea331db75e54a08c3018.png?size=1024",
-                        secondary: "Admin\nModerator",
-                    },
-                ],
-                [
-                    {
-                        name: "@berkeley.edu",
-                        image: "https://cdn.discordapp.com/avatars/138498458075136000/d8e2ab371ab85c7cd19f6eb5d155baa1.png?size=1024",
-                        secondary: "Admin",
-                    },
-                ],
-                [
-                    {
                         name: "@metspek",
-                        image: "https://cdn.discordapp.com/avatars/243763234685976577/5edc4c39e70607d599b60345b5353d91.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/243763234685976577/23c01adfb241872717ea4096effe2b85.png?size=1024",
                         secondary: "Developer\nModerator",
                     },
                 ],
                 [
                     {
+                        name: "@joe_lin",
+                        image: "https://cdn.discordapp.com/avatars/266729189997150208/fc4184bf8f2431f5731e1ee091a6eb5e.png?size=1024",
+                        secondary: "Developer",
+                    },
+                    {
                         name: "@skiparoo",
-                        image: "https://cdn.discordapp.com/avatars/97104885337575424/8e1051525868ae6e8eb0929f91ad25e2.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/97104885337575424/f0786600cda59b760b503856c85996ae.png?size=1024",
                         secondary: "Developer",
                     },
                 ],
                 [
                     {
                         name: "@echogecko.",
-                        image: "https://cdn.discordapp.com/avatars/386482648945524738/e02cfa7d77f93cc5af8018a3cb3a9815.png?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
-                    },
-                    {
-                        name: "@a_spect",
-                        image: "https://cdn.discordapp.com/avatars/651131088219144232/2067702fd6c3fc2f19363fadce761345.png?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
-                    },
-                    {
-                        name: "@saerauh",
-                        image: "https://cdn.discordapp.com/avatars/903797931533025310/a_30c5a08d8adb01166939fc5b7d83e7eb.gif?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
+                        image: "https://cdn.discordapp.com/avatars/386482648945524738/5f64911a070b6d849cec11fdb90ee19a.png?size=1024",
+                        secondary: "Moderator\nEvent Team",
                     },
                     {
                         name: "@angeljanin",
-                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/874420399608332370/avatars/77f89b5ae1dd8aa4696faf83076f9467.png?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
+                        image: "https://cdn.discordapp.com/avatars/874420399608332370/c419e2ceeb02bdf2626ec6bd92501eb6.png?size=1024",
+                        secondary: "Moderator\nEvent Team",
                     },
                     {
-                        name: "@jynxerso",
-                        image: "https://cdn.discordapp.com/avatars/449792537272516628/e00adbf642cc97e68313742ccae04774.png?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
+                        name: "@ellewoods.",
+                        image: "https://cdn.discordapp.com/avatars/470615071035359262/a3083a897c28b8c318ecbe312daf37d2.png?size=1024",
+                        secondary: "Moderator\nEvent Team",
                     },
                     {
                         name: "@fuzzwuzz",
-                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/825499845070028800/avatars/dc8630d4db8e3f966d8e9c5ee8b65ac8.png?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
+                        image: "https://cdn.discordapp.com/avatars/825499845070028800/a37befda03c942cb344fceb85d514cdc.png?size=1024",
+                        secondary: "Moderator\nEvent Team",
                     },
                     {
                         name: "@bren.__.",
-                        image: "https://cdn.discordapp.com/avatars/336148113465278464/2d3ba5b2669f90ec2382ef470ee5c657.png?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
-                    },
-                    {
-                        name: "@astra._.xx",
-                        image: "https://cdn.discordapp.com/avatars/596583995463172106/35be1375cbadeeaa24981228d18feba7.png?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
+                        image: "https://cdn.discordapp.com/avatars/336148113465278464/1e52520faacf4c944f96c552fcda3907.png?size=1024",
+                        secondary: "Moderator\nEvent Team",
                     },
                     {
                         name: "@taz989",
-                        image: "https://cdn.discordapp.com/avatars/118587743746916353/a7328af9dc595aca0320002da9fcc9d0.png?size=1024",
-                        secondary: "Moderator\nContent & Artwork Team",
+                        image: "https://cdn.discordapp.com/avatars/118587743746916353/723bd326059dbc33c63e25fa9e118a23.png?size=1024",
+                        secondary: "Moderator\nEvent Team",
                     },
                 ],
                 [
                     {
                         name: "@.lime_.",
-                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/554611606492020737/avatars/b822f68978f4c6a68140a3dc3772a736.png?size=1024",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/554611606492020737/avatars/c9f61bce87366b44a463a75d3810f67b.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
                         name: "@lesbians.",
-                        image: "https://cdn.discordapp.com/avatars/517063415613751337/e7da2af86a778a9193b2c311dddc44d2.png?size=1024",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/517063415613751337/avatars/38f1a590fbc91b9e686ef8295d1883e9.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
-                        name: "@ellewoods.",
-                        image: "https://cdn.discordapp.com/avatars/470615071035359262/0595587866e102a8f0103f4c9ce3d8f8.png?size=1024",
+                        name: "@a_spect",
+                        image: "https://cdn.discordapp.com/avatars/651131088219144232/2067702fd6c3fc2f19363fadce761345.png?size=1024",
+                        secondary: "Moderator",
+                    },
+                    {
+                        name: "@saerauh",
+                        image: "https://cdn.discordapp.com/avatars/903797931533025310/a_39b8e891a20a348f687f53c22e3c0082.gif?size=1024",
                         secondary: "Moderator",
                     },
                     {
@@ -193,13 +169,13 @@ export async function getStaticProps(context) {
                         secondary: "Moderator",
                     },
                     {
-                        name: "@amethyst_000",
-                        image: "https://cdn.discordapp.com/avatars/457553805442023426/7cf068d3ad5339e2a4b9000b31989d71.png?size=1024",
+                        name: "@_amethyst_1",
+                        image: "https://cdn.discordapp.com/avatars/457553805442023426/d9711bd004b3d845d1e5f9bfbadefc91.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
                         name: "@imperatorjordy",
-                        image: "https://cdn.discordapp.com/avatars/349284248840175617/c29fd71f486741d2a575a52af8455bff.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/349284248840175617/b102c27457681426bedcb527528f1c18.png?size=1024",
                         secondary: "Moderator",
                     },
                     {
@@ -208,8 +184,18 @@ export async function getStaticProps(context) {
                         secondary: "Moderator",
                     },
                     {
+                        name: "@jynxerso",
+                        image: "https://cdn.discordapp.com/avatars/449792537272516628/7a14b24b23aa9acaaf3914c2e5779df4.png?size=1024",
+                        secondary: "Moderator",
+                    },
+                    {
+                        name: "@astra._.xx",
+                        image: "https://cdn.discordapp.com/avatars/596583995463172106/a93e09ef591f659f5ef409baf4ee934f.png?size=1024",
+                        secondary: "Moderator",
+                    },
+                    {
                         name: "@marc614",
-                        image: "https://cdn.discordapp.com/avatars/906333339080884235/a_c46af76079267feae414cd28625453ac.gif?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/906333339080884235/a_e1d9d764a6232c8fb856b570597dd77f.gif?size=1024",
                         secondary: "Moderator",
                     },
                     {
@@ -219,15 +205,20 @@ export async function getStaticProps(context) {
                     },
                     {
                         name: "@yiqii",
-                        image: "https://cdn.discordapp.com/avatars/297842109514383360/2680e63c2c2e2be906986a64f93cebe8.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/297842109514383360/9414555eecf34aa72ffac4efb2cfb3fa.png?size=1024",
                         secondary: "Moderator",
                     },
                 ],
                 [
                     {
                         name: "@krisppykreme",
-                        image: "https://cdn.discordapp.com/avatars/182301129231695872/a_bd226dd988b5a3e20db2dabba77b9dc1.gif?size=1024",
-                        secondary: "Content & Artwork Team",
+                        image: "https://cdn.discordapp.com/avatars/182301129231695872/a_6f2fa0983eff5e9d9f22c66f3a195e4b.gif?size=1024",
+                        secondary: "Event Team",
+                    },
+                    {
+                        name: "@somebluepigeon",
+                        image: "https://cdn.discordapp.com/avatars/711892049842012190/13beac52eef0fe7c7fe14857add7e4ca.png?size=1024",
+                        secondary: "Event Team",
                     },
                 ],
             ],
