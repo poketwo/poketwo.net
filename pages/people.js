@@ -80,36 +80,46 @@ export async function getStaticProps(context) {
                     },
                     {
                         name: "anoea",
-                        image: "https://cdn.discordapp.com/avatars/285861483412193280/4dbbe03b6adb36c5eda92e3415f51d20.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/285861483412193280/684987d47b8a64c2e7b2dd6ad1712d80.png?size=1024",
                         secondary: "Admin\nEvent Team Lead"
                     }
                 ],
                 [
                     {
                         name: "witherr.",
-                        image: "https://cdn.discordapp.com/avatars/267550284979503104/f89cf0f3d1af26565b995f4b1ac6c546.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/267550284979503104/d7988365d15460256f97303e50901420.png?size=1024",
                         secondary: "Admin\nDeveloper"
                     }
                 ],
                 [
                     {
-                        name: "somebluepigeon",
-                        image: "https://cdn.discordapp.com/avatars/711892049842012190/b601a37ad50d15195b99d0339e69876d.png?size=1024",
-                        secondary: "Admin\nModerator"
-                    }
-                ],
-                [
-                    {
                         name: "metspek",
-                        image: "https://cdn.discordapp.com/avatars/243763234685976577/d254b4bd1a736c40423db6ebf4f451db.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/243763234685976577/a96c15a3f8f8323f16f5b0412867acfc.png?size=1024",
                         secondary: "Developer\nEvent Team"
                     }
                 ],
                 [
                     {
                         name: "skiparoo",
-                        image: "https://cdn.discordapp.com/avatars/97104885337575424/a2800c9c00832e19c3b8d19f99f0deb6.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/97104885337575424/f5792475c90ec49005adfe19f5b7761e.png?size=1024",
                         secondary: "Developer"
+                    }
+                ],
+                [
+                    {
+                        name: "ellewoods.",
+                        image: "https://cdn.discordapp.com/avatars/470615071035359262/61184d999be2aaba6ddae5df953c6e11.png?size=1024",
+                        secondary: "Bot Manager\nModerator"
+                    },
+                    {
+                        name: "bren.__.",
+                        image: "https://cdn.discordapp.com/avatars/336148113465278464/6eb645e4db471fd04c93e75be20920a2.png?size=1024",
+                        secondary: "Bot Manager\nModerator"
+                    },
+                    {
+                        name: "lesbians.",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/517063415613751337/avatars/391076db6fa949972ae42ba710543b1c.png?size=1024",
+                        secondary: "Server Manager\nModerator"
                     }
                 ],
                 [
@@ -119,55 +129,30 @@ export async function getStaticProps(context) {
                         secondary: "Moderator\nEvent Team"
                     },
                     {
-                        name: "lesbians.",
-                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/517063415613751337/avatars/95bb1345096df9473553acd32661ff25.png?size=1024",
-                        secondary: "Moderator\nEvent Team"
-                    },
-                    {
-                        name: "angeljanin",
-                        image: "https://cdn.discordapp.com/avatars/874420399608332370/c419e2ceeb02bdf2626ec6bd92501eb6.png?size=1024",
-                        secondary: "Moderator\nEvent Team"
-                    },
-                    {
-                        name: "ellewoods.",
-                        image: "https://cdn.discordapp.com/avatars/470615071035359262/511a6b1a8ec7d51a058c7661b2a22010.png?size=1024",
-                        secondary: "Moderator\nEvent Team"
-                    },
-                    {
                         name: "tazzy989",
-                        image: "https://cdn.discordapp.com/avatars/1042169206692651038/8d730a1c96e84c3ac9870444faed5dc9.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/1042169206692651038/dea52a68870d1a8a462af8c26fb473c0.png?size=1024",
                         secondary: "Moderator\nEvent Team"
                     },
                     {
                         name: "fuzzwuzz",
-                        image: "https://cdn.discordapp.com/avatars/825499845070028800/098407f20da523594ec556919ec47294.png?size=1024",
-                        secondary: "Moderator\nEvent Team"
-                    },
-                    {
-                        name: "bren.__.",
-                        image: "https://cdn.discordapp.com/avatars/336148113465278464/512dd676ef7af261afd4183d4530369f.png?size=1024",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/825499845070028800/avatars/90878f767fcfa2db58103261875cf07d.png?size=1024",
                         secondary: "Moderator\nEvent Team"
                     }
                 ],
                 [
                     {
-                        name: ".lime_.",
-                        image: "https://cdn.discordapp.com/avatars/554611606492020737/de433b0d00ad204575d47c791b311ef2.png?size=1024",
+                        name: "nathuhn",
+                        image: "https://cdn.discordapp.com/avatars/344338374489931789/0cf7e6213c093a20492cbe40e698ef79.png?size=1024",
                         secondary: "Moderator"
                     },
                     {
-                        name: "born2shit",
-                        image: "https://cdn.discordapp.com/avatars/406805791274827786/e1c92ec156a00b2f14d49aec706171fa.png?size=1024",
+                        name: "frankmyocean",
+                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/546492524366266369/avatars/33d787301f2ec142e7fd63191fa97c04.png?size=1024",
                         secondary: "Moderator"
                     },
                     {
-                        name: "saerauh",
-                        image: "https://cdn.discordapp.com/avatars/903797931533025310/a_39b8e891a20a348f687f53c22e3c0082.gif?size=1024",
-                        secondary: "Moderator"
-                    },
-                    {
-                        name: "_amethyst_1",
-                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/457553805442023426/avatars/a_7abe944d74b3300df4f7de1bce7405d4.gif?size=1024",
+                        name: "barbieviewer",
+                        image: "https://cdn.discordapp.com/avatars/1282634614761848832/2792c5a30aebd9951be99b22acdfb0dc.png?size=1024",
                         secondary: "Moderator"
                     },
                     {
@@ -182,39 +167,44 @@ export async function getStaticProps(context) {
                     },
                     {
                         name: "jynxerso",
-                        image: "https://cdn.discordapp.com/avatars/449792537272516628/776b3163cd7b3d85d5133e865bbd7848.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/449792537272516628/336a303b05884ed92cb606f3f3de642d.png?size=1024",
                         secondary: "Moderator"
                     },
                     {
-                        name: "marc614",
-                        image: "https://cdn.discordapp.com/avatars/906333339080884235/577b99c57b711c8af7a06d18139a5518.png?size=1024",
+                        name: "koh.na",
+                        image: "https://cdn.discordapp.com/avatars/1177693947481559090/4436f6f74f2c60910cdff614fae1d937.png?size=1024",
                         secondary: "Moderator"
                     },
                     {
-                        name: "enemy_yes",
-                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/663245308549005334/avatars/ebf87353b17be140b199b440e690408a.png?size=1024",
+                        name: "swpt",
+                        image: "https://cdn.discordapp.com/avatars/891522852182982656/ed46fb72746d5d73be5e05b7989d40b9.png?size=1024",
                         secondary: "Moderator"
                     },
                     {
                         name: "yiqii",
-                        image: "https://cdn.discordapp.com/avatars/297842109514383360/f363df274fa845c5a91c73496935bfeb.png?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/297842109514383360/a33b0c3c718e07fba4e20cfac6050185.png?size=1024",
                         secondary: "Moderator"
                     }
                 ],
                 [
                     {
                         name: "krisppykreme",
-                        image: "https://cdn.discordapp.com/avatars/182301129231695872/a_73f74271776a1e2c861ad965a685ac06.gif?size=1024",
+                        image: "https://cdn.discordapp.com/avatars/182301129231695872/a_a2e7404e72186c3272734bad65a9f010.gif?size=1024",
                         secondary: "Event Team"
                     },
                     {
-                        name: "jjyamanie",
-                        image: "https://cdn.discordapp.com/avatars/635631164601663489/c722783a8d2adacd49783c761c71015f.png?size=1024",
+                        name: "a_spect",
+                        image: "https://cdn.discordapp.com/avatars/651131088219144232/2067702fd6c3fc2f19363fadce761345.png?size=1024",
                         secondary: "Event Team"
                     },
                     {
-                        name: "jasreetdhillon",
-                        image: "https://cdn.discordapp.com/avatars/745825974880436294/a46d8aa570487cebc31035f424b91eda.png?size=1024",
+                        name: "angeljanin",
+                        image: "https://cdn.discordapp.com/avatars/874420399608332370/6569c5ddb82ff34c5abe0ebaec9acbea.png?size=1024",
+                        secondary: "Event Team"
+                    },
+                    {
+                        name: "qydv",
+                        image: "https://cdn.discordapp.com/avatars/745825974880436294/cc7667307008d49927db71e7537f9ded.png?size=1024",
                         secondary: "Event Team"
                     }
                 ]
