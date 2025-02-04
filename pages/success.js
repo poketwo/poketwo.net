@@ -22,7 +22,7 @@ const SessionDetails = ({ session }) => (
                 </b>{" "}
                 was successful, and a receipt has been sent to <b>{session.customer_details.email}</b>.
             </p>
-            <p>For any questions or concerns, please contact <b>oliver</b> on Discord.</p>
+            <p>For any questions or concerns, please contact <b>@oliver</b> on Discord.</p>
         </div>
     </div>
 );
