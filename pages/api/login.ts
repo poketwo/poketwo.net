@@ -1,19 +1,26 @@
 import crypto from "crypto";
-import { withIronSessionApiRoute } from "iron-session/next";
+import { getIronSession } from "iron-session";
+import { NextApiRequest, NextApiResponse } from "next";
 import oauth from "../../helpers/oauth";
 import { ironSessionOptions } from "../../helpers/session";
 
-const handler = withIronSessionApiRoute(async (req, res) => {
-    if (!req.session.id) {
-        req.session.id = crypto.randomBytes(16).toString("hex");
-        await req.session.save();
+interface SessionData {
+    id?: string;
+    user?: any;
+}
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    const session = await getIronSession<SessionData>(req, res, ironSessionOptions);
+    if (!session.id) {
+        session.id = crypto.randomBytes(16).toString("hex");
+        await session.save();
     }
-    const state = crypto.createHash("sha256").update(req.session.id).digest("hex");
+    const state = crypto.createHash("sha256").update(session.id).digest("hex");
     const url = oauth.generateAuthUrl({
         state,
         scope: "identify email",
     });
     res.redirect(url).end();
-}, ironSessionOptions);
+};
 
 export default handler;

@@ -1,5 +1,5 @@
-import { APIUser } from "discord-api-types";
-import { IronSessionOptions } from "iron-session";
+import { APIUser } from "discord-api-types/v10";
+import { SessionOptions } from "iron-session";
 
 declare module "iron-session" {
     interface IronSessionData {
@@ -8,7 +8,7 @@ declare module "iron-session" {
     }
 }
 
-export const ironSessionOptions: IronSessionOptions = {
+export const ironSessionOptions: SessionOptions = {
     password: process.env.SECRET_KEY as string,
     cookieName: "poketwo",
     cookieOptions: { maxAge: 86400 },

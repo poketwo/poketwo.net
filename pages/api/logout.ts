@@ -1,9 +1,16 @@
-import { withIronSessionApiRoute } from "iron-session/next";
+import { getIronSession } from "iron-session";
+import { NextApiRequest, NextApiResponse } from "next";
 import { ironSessionOptions } from "../../helpers/session";
 
-const handler = withIronSessionApiRoute(async (req, res) => {
-    req.session.destroy();
+interface SessionData {
+    id?: string;
+    user?: any;
+}
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    const session = await getIronSession<SessionData>(req, res, ironSessionOptions);
+    session.destroy();
     res.redirect("/store").end();
-}, ironSessionOptions);
+};
 
 export default handler;
