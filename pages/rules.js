@@ -25,7 +25,7 @@ const RulesText = () => (
                 <li>
                     Follow the{" "}
                     <Link href="/code-of-conduct">
-                        <a>Pokétwo Code of Conduct.</a>
+                        Pokétwo Code of Conduct.
                     </Link>
                 </li>
                 <li>Follow and respect staff members and their instructions.</li>

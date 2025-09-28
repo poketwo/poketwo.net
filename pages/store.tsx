@@ -45,8 +45,8 @@ const Authentication = ({ user }: AuthenticationProps) => {
         <div className="section">
             <div className="container has-text-centered">
                 {!authenticated && (
-                    <Link href="/api/login">
-                        <a className="button is-light is-rounded is-medium has-shadow">Login with Discord</a>
+                    <Link href="/api/login" className="button is-light is-rounded is-medium has-shadow">
+                        Login with Discord
                     </Link>
                 )}
                 {authenticated && (
@@ -65,8 +65,8 @@ const Authentication = ({ user }: AuthenticationProps) => {
                     </div>
                 )}
                 {authenticated && (
-                    <Link href="/api/logout">
-                        <a className="button is-light is-rounded has-shadow">Logout</a>
+                    <Link href="/api/logout" className="button is-light is-rounded has-shadow">
+                        Logout
                     </Link>
                 )}
             </div>

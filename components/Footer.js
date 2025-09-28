@@ -11,8 +11,8 @@ const FooterLink = ({ href, children, external }) => {
         Tag = "a";
     } else {
         Tag = ({ href, children, ...props }) => (
-            <Link href={href}>
-                <a {...props}>{children}</a>
+            <Link href={href} {...props}>
+                {children}
             </Link>
         );
     }
