@@ -189,7 +189,7 @@ interface SessionData {
 
 export const getServerSideProps = async ({ req, res }: { req: any; res: any }) => {
     const session = await getIronSession<SessionData>(req, res, ironSessionOptions);
-    
+
     const productsData = await stripe.products.list({ active: true });
     const prices = await stripe.prices.list({ active: true, limit: 100 });
     const products = productsData["data"].reduce<Map<string, Stripe.Product>>((acc, x) => {
