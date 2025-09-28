@@ -1,7 +1,7 @@
-import { APIUser } from "discord-api-types/v9";
+import { APIUser } from "discord-api-types/v10";
 import Stripe from "stripe";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: "2020-08-27" });
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: "2025-02-24.acacia" });
 
 export type CheckoutOptions = {
     user: APIUser;

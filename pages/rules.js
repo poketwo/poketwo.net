@@ -23,10 +23,7 @@ const RulesText = () => (
                     <a href="https://discord.com/guidelines">Discord Community Guidelines</a>.
                 </li>
                 <li>
-                    Follow the{" "}
-                    <Link href="/code-of-conduct">
-                        <a>Pokétwo Code of Conduct.</a>
-                    </Link>
+                    Follow the <Link href="/code-of-conduct">Pokétwo Code of Conduct.</Link>
                 </li>
                 <li>Follow and respect staff members and their instructions.</li>
                 <li>This is an English-only server, so please speak English to the best of your ability.</li>

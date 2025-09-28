@@ -1,8 +1,7 @@
-import { IpregistryClient } from "@ipregistry/client";
 import { loadStripe } from "@stripe/stripe-js";
 import classNames from "classnames";
-import { APIUser } from "discord-api-types";
-import { withIronSessionSsr } from "iron-session/next";
+import { APIUser } from "discord-api-types/v10";
+import { getIronSession } from "iron-session";
 import Link from "next/link";
 import { useState } from "react";
 import Stripe from "stripe";
@@ -46,8 +45,8 @@ const Authentication = ({ user }: AuthenticationProps) => {
         <div className="section">
             <div className="container has-text-centered">
                 {!authenticated && (
-                    <Link href="/api/login">
-                        <a className="button is-light is-rounded is-medium has-shadow">Login with Discord</a>
+                    <Link href="/api/login" className="button is-light is-rounded is-medium has-shadow">
+                        Login with Discord
                     </Link>
                 )}
                 {authenticated && (
@@ -66,8 +65,8 @@ const Authentication = ({ user }: AuthenticationProps) => {
                     </div>
                 )}
                 {authenticated && (
-                    <Link href="/api/logout">
-                        <a className="button is-light is-rounded has-shadow">Logout</a>
+                    <Link href="/api/logout" className="button is-light is-rounded has-shadow">
+                        Logout
                     </Link>
                 )}
             </div>
@@ -183,8 +182,13 @@ const Store = ({ user, currencies, defaultCurrency }: StoreProps) => {
 
 export default Store;
 
-export const getServerSideProps = withIronSessionSsr<StoreProps>(async ({ req }) => {
-    // Get products
+interface SessionData {
+    id?: string;
+    user?: APIUser;
+}
+
+export const getServerSideProps = async ({ req, res }: { req: any; res: any }) => {
+    const session = await getIronSession<SessionData>(req, res, ironSessionOptions);
 
     const productsData = await stripe.products.list({ active: true });
     const prices = await stripe.prices.list({ active: true, limit: 100 });
@@ -206,23 +210,13 @@ export const getServerSideProps = withIronSessionSsr<StoreProps>(async ({ req })
         return acc;
     }, {});
 
-    // Get default currency
-
     let defaultCurrency = "USD";
-
-    try {
-        const ipregistry = new IpregistryClient(process.env.IPREGISTRY_API_KEY as string);
-        const ip = req.headers["x-real-ip"];
-        if (typeof ip !== "string") throw new Error();
-        const response = await ipregistry.lookup(ip);
-        defaultCurrency = response.data.currency.code ?? "USD";
-    } catch {}
 
     return {
         props: {
-            user: req.session.user ?? null,
+            user: session.user ?? null,
             currencies,
             defaultCurrency,
         },
     };
-}, ironSessionOptions);
+};

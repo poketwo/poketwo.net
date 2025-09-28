@@ -4,7 +4,7 @@ import { DefaultSeo } from "next-seo";
 import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { pageview } from "../helpers/gtag";
 import MainLayout from "../layouts/MainLayout";
 import "../styles/main.scss";

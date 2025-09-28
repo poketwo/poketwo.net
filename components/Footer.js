@@ -1,3 +1,4 @@
+import React from "react";
 import { faDiscord, faReddit, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,8 +11,8 @@ const FooterLink = ({ href, children, external }) => {
         Tag = "a";
     } else {
         Tag = ({ href, children, ...props }) => (
-            <Link href={href}>
-                <a {...props}>{children}</a>
+            <Link href={href} {...props}>
+                {children}
             </Link>
         );
     }

@@ -1,10 +1,17 @@
 import crypto from "crypto";
-import { withIronSessionApiRoute } from "iron-session/next";
+import { getIronSession, IronSession } from "iron-session";
+import { NextApiRequest, NextApiResponse } from "next";
 import oauth from "../../helpers/oauth";
 import { ironSessionOptions } from "../../helpers/session";
 
-const handler = withIronSessionApiRoute(async (req, res) => {
-    if (!req.session.id) {
+interface SessionData {
+    id?: string;
+    user?: any;
+}
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    const session = await getIronSession<SessionData>(req, res, ironSessionOptions);
+    if (!session.id) {
         res.status(401).end();
         return;
     }
@@ -15,7 +22,7 @@ const handler = withIronSessionApiRoute(async (req, res) => {
         return;
     }
 
-    const currentState = crypto.createHash("sha256").update(req.session.id).digest("hex");
+    const currentState = crypto.createHash("sha256").update(session.id).digest("hex");
     if (currentState !== state) {
         res.status(401).end();
         return;
@@ -33,15 +40,15 @@ const handler = withIronSessionApiRoute(async (req, res) => {
         return;
     }
 
-    req.session.user = {
+    session.user = {
         ...user,
         accent_color: user.accent_color ? Number(user.accent_color) : null,
         avatar: user.avatar ?? null,
         mfa_enabled: !!user.mfa_enabled,
     };
-    await req.session.save();
+    await session.save();
 
     res.redirect("/store").end();
-}, ironSessionOptions);
+};
 
 export default handler;

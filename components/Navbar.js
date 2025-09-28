@@ -1,3 +1,4 @@
+import React from "react";
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -8,7 +9,7 @@ const NavbarItem = ({ href, children, active, className, tag, ...props }) => {
     let Tag = tag ?? href ? "a" : "div";
     let Wrapper = href ? Link : React.Fragment;
     return (
-        <Wrapper {...(href ? { href } : {})}>
+        <Wrapper {...(href ? { href } : {})} legacyBehavior>
             <Tag
                 className={classNames({
                     "navbar-item": true,
