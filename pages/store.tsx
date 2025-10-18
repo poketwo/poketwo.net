@@ -173,13 +173,9 @@ const Store = ({ user, currencies, defaultCurrency }: StoreProps) => {
     return (
         <>
             <Banner />
-            <p className="has-text-centered">
-                The Pokétwo store is temporarily closed while we work on fixes to the bot.
-            </p>
-            <p className="has-text-centered">Thank you for your patience.</p>
-            {/*<Authentication user={user} />*/}
+            <Authentication user={user} />
             {/* <CurrencySelect choices={Object.keys(currencies)} selected={currency} onSelect={setCurrency} /> */}
-            {/*<Items user={user} items={items} onCheckout={handleCheckout} />*/}
+            <Items user={user} items={items} onCheckout={handleCheckout} />
         </>
     );
 };
