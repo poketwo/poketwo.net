@@ -11,9 +11,10 @@ const Content = () => (
     <div className="content">
         <h2>Recent Changes</h2>
         <p>
-            <strong>October 20, 2025:</strong> Added prohibition on compensated invite events where Virtual Currency or
-            Virtual Goods are offered as rewards for Discord server invites or advertising. Removed the approved
-            third-party services list.
+            <strong>October 20, 2025:</strong> Added prohibition on{" "}
+            <a href="#:~:text=Additionally%2C%20you%20shall%20not%20host,compensation%20or%20eligibility">compensated invite events</a> where Virtual
+            Currency or Virtual Goods are offered as rewards for Discord server invites or advertising. Removed the
+            approved third-party services list.
         </p>
 
         <h2>Introduction</h2>
