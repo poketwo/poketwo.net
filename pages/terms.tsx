@@ -2,13 +2,20 @@ const Banner = () => (
     <div className="section">
         <div className="container has-text-centered">
             <p className="title is-2">Terms of Service</p>
-            <p className="subtitle">Effective Date: May 23, 2022</p>
+            <p className="subtitle">Effective Date: October 20, 2025</p>
         </div>
     </div>
 );
 
 const Content = () => (
     <div className="content">
+        <h2>Recent Changes</h2>
+        <p>
+            <strong>October 20, 2025:</strong> Added prohibition on compensated invite events where Virtual Currency or
+            Virtual Goods are offered as rewards for Discord server invites or advertising. Removed the approved
+            third-party services list.
+        </p>
+
         <h2>Introduction</h2>
         <p>
             Welcome to Pokétwo, a service provided by HFYM LLC. We're glad to have you here! These terms of service (the
@@ -110,8 +117,8 @@ const Content = () => (
             <li>the exchange of Virtual Currency or Virtual Goods for any other paper or digital currency; and</li>
             <li>
                 the exchange of Virtual Currency or Virtual Goods for currencies, goods, and other items within
-                unapproved third-party services (as listed below), including, but not limited to, social media
-                platforms, games, and other Discord bots.
+                third-party services, including, but not limited to, social media platforms, games, and other Discord
+                bots.
                 <ul>
                     <li>
                         An exception to the foregoing rule shall be made in cases where Virtual Currency or Virtual
@@ -119,6 +126,23 @@ const Content = () => (
                     </li>
                 </ul>
             </li>
+        </ul>
+        <p>
+            Additionally, you shall not host, participate in, or advertise events, giveaways, or competitions where
+            Virtual Currency or Virtual Goods are offered as compensation or rewards for inviting users to join a
+            Discord server or for advertising a Discord server ("invite rewards", "join rewards"). This prohibition
+            includes, but is not limited to:
+        </p>
+        <ul>
+            <li>
+                offering Virtual Currency or Virtual Goods in exchange for users joining a Discord server via an invite
+                link;
+            </li>
+            <li>
+                compensating users with Virtual Currency or Virtual Goods based on the number of Discord server invites
+                they generate or the number of users who join through their invites; or
+            </li>
+            <li>otherwise using server invite activity as a basis for compensation or eligibility.</li>
         </ul>
         <p>
             A violation of any of the foregoing may result in suspension of your access to the Services. The Company
@@ -131,16 +155,6 @@ const Content = () => (
             cause attributable to you, any and all unused Virtual Currency and Virtual Goods shall be forfeited and no
             refund shall be granted.
         </p>
-        <h4>Approved Third-Party Services</h4>
-        <p>
-            Currently, the following services have been approved for third-party trading. The exchange of Virtual
-            Currency or Virtual Goods for currencies, goods, or items within services not listed below is a violation of
-            the Terms of Service.
-        </p>
-        <ul>
-            <li>P2HB (Discord bot, Application ID: 818706022675120138)</li>
-        </ul>
-
         <h2>Terms and Conditions of Sale</h2>
         <p>
             While we will not charge you a fee to use the basic functionality of the Services, certain products and
