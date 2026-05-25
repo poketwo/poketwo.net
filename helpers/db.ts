@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { Long, MongoClient } from "mongodb";
 
 const uri = process.env.DATABASE_URI as string;
 const dbName = process.env.DATABASE_NAME as string;
@@ -21,12 +21,13 @@ export type PoketwoAccount = {
 export async function fetchPoketwoAccount(discordId: string): Promise<PoketwoAccount | null> {
     const client = await getClient();
     const db = client.db(dbName);
+    const id = Long.fromString(discordId);
 
-    const member = await db.collection("member").findOne({ _id: parseInt(discordId) as any });
+    const member = await db.collection("member").findOne({ _id: id as any });
     if (!member) return null;
 
     const pokemonCount = await db.collection("pokemon").countDocuments({
-        owner_id: parseInt(discordId),
+        owner_id: id,
         owned_by: "user",
     });
 
