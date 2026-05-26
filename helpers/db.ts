@@ -7,7 +7,11 @@ let cachedClient: MongoClient | null = null;
 
 async function getClient(): Promise<MongoClient> {
     if (cachedClient) return cachedClient;
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri, {
+        serverSelectionTimeoutMS: 5000,
+        connectTimeoutMS: 5000,
+        socketTimeoutMS: 5000,
+    });
     await client.connect();
     cachedClient = client;
     return client;
