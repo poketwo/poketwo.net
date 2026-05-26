@@ -303,7 +303,11 @@ export const getServerSideProps = async ({ req, res }: { req: any; res: any }) =
 
     let account: PoketwoAccount | null = null;
     if (session.user) {
-        account = await fetchPoketwoAccount(session.user.id);
+        try {
+            account = await fetchPoketwoAccount(session.user.id);
+        } catch {
+            account = null;
+        }
     }
 
     return {
