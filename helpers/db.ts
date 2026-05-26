@@ -1,17 +1,5 @@
-import { Long, MongoClient } from "mongodb";
-
-const uri = process.env.DATABASE_URI as string;
-const dbName = process.env.DATABASE_NAME as string;
-
-let cachedClient: MongoClient | null = null;
-
-async function getClient(): Promise<MongoClient> {
-    if (cachedClient) return cachedClient;
-    const client = new MongoClient(uri);
-    await client.connect();
-    cachedClient = client;
-    return client;
-}
+const WEBHOOK_SERVER_URL = process.env.WEBHOOK_SERVER_URL ?? "https://webhooks.poketwo.io";
+const ACCOUNT_SECRET = process.env.ACCOUNT_SECRET ?? "";
 
 export type PoketwoAccount = {
     balance: number;
@@ -19,20 +7,10 @@ export type PoketwoAccount = {
 };
 
 export async function fetchPoketwoAccount(discordId: string): Promise<PoketwoAccount | null> {
-    const client = await getClient();
-    const db = client.db(dbName);
-    const id = Long.fromString(discordId);
-
-    const member = await db.collection("member").findOne({ _id: id as any });
-    if (!member) return null;
-
-    const pokemonCount = await db.collection("pokemon").countDocuments({
-        owner_id: id,
-        owned_by: "user",
+    const res = await fetch(`${WEBHOOK_SERVER_URL}/account/${discordId}`, {
+        headers: { Authorization: ACCOUNT_SECRET },
     });
-
-    return {
-        balance: member.balance ?? 0,
-        pokemonCount,
-    };
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error(`Account lookup failed: ${res.status}`);
+    return await res.json();
 }
