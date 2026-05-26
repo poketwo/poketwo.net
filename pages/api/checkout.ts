@@ -1,5 +1,6 @@
 import { getIronSession } from "iron-session";
 import { NextApiRequest, NextApiResponse } from "next";
+import { fetchPoketwoAccount } from "../../helpers/db";
 import { ironSessionOptions } from "../../helpers/session";
 import { checkout } from "../../helpers/stripe";
 
@@ -16,6 +17,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
     if (!session.user) {
         res.status(401).send("Missing session data");
+        return;
+    }
+
+    const account = await fetchPoketwoAccount(session.user.id);
+    if (!account) {
+        res.status(403).send("No Pokétwo account found for this Discord account");
         return;
     }
 

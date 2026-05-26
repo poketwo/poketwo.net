@@ -5,6 +5,7 @@ import { getIronSession } from "iron-session";
 import Link from "next/link";
 import { useState } from "react";
 import Stripe from "stripe";
+import { fetchPoketwoAccount, PoketwoAccount } from "../helpers/db";
 import { ironSessionOptions } from "../helpers/session";
 import { stripe } from "../helpers/stripe";
 import styles from "../styles/store.module.scss";
@@ -94,15 +95,84 @@ const Item = ({ item, selected, onSelect }: ItemProps) => (
     </div>
 );
 
+type ConfirmModalProps = {
+    user: APIUser;
+    account: PoketwoAccount;
+    item: Item;
+    onConfirm: () => void;
+    onCancel: () => void;
+};
+
+const ConfirmModal = ({ user, account, item, onConfirm, onCancel }: ConfirmModalProps) => {
+    let avatar_url;
+    if (user.avatar) {
+        const file_ext = user.avatar.startsWith("a_") ? "gif" : "png";
+        avatar_url = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${file_ext}`;
+    } else {
+        avatar_url = `https://cdn.discordapp.com/embed/avatars/${Number(user.discriminator) % 5}.png`;
+    }
+
+    return (
+        <div className="modal is-active">
+            <div className="modal-background" onClick={onCancel} />
+            <div className="modal-card">
+                <header className="modal-card-head">
+                    <p className="modal-card-title">Confirm Your Account</p>
+                    <button className="delete" aria-label="close" onClick={onCancel} />
+                </header>
+                <section className="modal-card-body has-text-centered">
+                    <p className="mb-4">
+                        You are about to purchase <strong>{item.name}</strong> ({item.formatted}) for the following
+                        account:
+                    </p>
+                    <div className="box">
+                        <figure className="image is-64x64 mb-3 mx-auto">
+                            <img className="is-rounded" src={avatar_url} alt="Profile Picture" />
+                        </figure>
+                        <p className="title is-5">
+                            {user.username}#{user.discriminator}
+                        </p>
+                        <p className="subtitle is-6">{user.email}</p>
+                        <div className="columns is-centered mt-2">
+                            <div className="column is-narrow">
+                                <p>
+                                    <strong>{account.pokemonCount.toLocaleString()}</strong> Pok&eacute;mon
+                                </p>
+                            </div>
+                            <div className="column is-narrow">
+                                <p>
+                                    <strong>{account.balance.toLocaleString()}</strong> Pok&eacute;coins
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p className="has-text-warning">Please make sure this is the correct account before proceeding.</p>
+                </section>
+                <footer className="modal-card-foot is-justify-content-flex-end">
+                    <button className="button" onClick={onCancel}>
+                        Cancel
+                    </button>
+                    <button className="button is-link" onClick={onConfirm}>
+                        Confirm & Checkout
+                    </button>
+                </footer>
+            </div>
+        </div>
+    );
+};
+
 type ItemsProps = {
     user: APIUser | null;
+    account: PoketwoAccount | null;
     items: Item[];
     onCheckout: (item: Item) => void;
 };
 
-const Items = ({ user, items, onCheckout }: ItemsProps) => {
+const Items = ({ user, account, items, onCheckout }: ItemsProps) => {
     const [selected, setSelected] = useState(-1);
+    const [confirming, setConfirming] = useState(false);
     const authenticated = user !== null;
+    const hasAccount = account !== null;
 
     return (
         <>
@@ -122,26 +192,45 @@ const Items = ({ user, items, onCheckout }: ItemsProps) => {
             </div>
             <div className="section">
                 <div className="container has-text-centered">
+                    {authenticated && !hasAccount && (
+                        <p className="has-text-danger mb-4">
+                            This Discord account does not have a Pok&eacute;two account. Please log out and log in with
+                            the correct account.
+                        </p>
+                    )}
                     <button
                         className="button is-link is-medium is-rounded has-shadow"
-                        onClick={() => onCheckout(items[selected])}
-                        disabled={!authenticated || selected === -1}
+                        onClick={() => setConfirming(true)}
+                        disabled={!authenticated || !hasAccount || selected === -1}
                     >
-                        Checkout{selected !== -1 && <> — {items[selected].formatted}</>}
+                        Checkout{selected !== -1 && <> &mdash; {items[selected].formatted}</>}
                     </button>
                 </div>
             </div>
+            {confirming && user && account && selected !== -1 && (
+                <ConfirmModal
+                    user={user}
+                    account={account}
+                    item={items[selected]}
+                    onConfirm={() => {
+                        setConfirming(false);
+                        onCheckout(items[selected]);
+                    }}
+                    onCancel={() => setConfirming(false)}
+                />
+            )}
         </>
     );
 };
 
 type StoreProps = {
     user: APIUser | null;
+    account: PoketwoAccount | null;
     currencies: { [key: string]: Item[] };
     defaultCurrency: string;
 };
 
-const Store = ({ user, currencies, defaultCurrency }: StoreProps) => {
+const Store = ({ user, account, currencies, defaultCurrency }: StoreProps) => {
     if (!currencies.hasOwnProperty(defaultCurrency)) defaultCurrency = "USD";
 
     const [currency, setCurrency] = useState(defaultCurrency);
@@ -175,7 +264,7 @@ const Store = ({ user, currencies, defaultCurrency }: StoreProps) => {
             <Banner />
             <Authentication user={user} />
             {/* <CurrencySelect choices={Object.keys(currencies)} selected={currency} onSelect={setCurrency} /> */}
-            <Items user={user} items={items} onCheckout={handleCheckout} />
+            <Items user={user} account={account} items={items} onCheckout={handleCheckout} />
         </>
     );
 };
@@ -212,9 +301,15 @@ export const getServerSideProps = async ({ req, res }: { req: any; res: any }) =
 
     let defaultCurrency = "USD";
 
+    let account: PoketwoAccount | null = null;
+    if (session.user) {
+        account = await fetchPoketwoAccount(session.user.id);
+    }
+
     return {
         props: {
             user: session.user ?? null,
+            account,
             currencies,
             defaultCurrency,
         },
