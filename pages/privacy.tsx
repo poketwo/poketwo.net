@@ -2,7 +2,7 @@ const Banner = () => (
     <div className="section">
         <div className="container has-text-centered">
             <p className="title is-2">Privacy Policy</p>
-            <p className="subtitle">Effective Date: May 23, 2022</p>
+            <p className="subtitle">Effective Date: October 21, 2026</p>
         </div>
     </div>
 );
@@ -30,6 +30,26 @@ const Content = () => (
         <p>
             We retain collected information for as long as is necessary to provide you with your requested service. Data
             is removed when the reason for its collection is no longer applicable.
+        </p>
+        <h2 id="guiduck">Guiduck</h2>
+        <p>
+            Guiduck is the moderation bot for the official Pokétwo Discord server. In addition to the above, it stores
+            the following to allow server moderators to review deleted and edited messages when handling reports:
+        </p>
+        <ul>
+            <li>
+                the text of messages sent in the server, including edit history and whether the message was deleted;
+            </li>
+            <li>
+                the author, channel, time, and attachment filenames of those messages (attachments themselves are
+                not stored); and
+            </li>
+            <li>moderation actions taken against members and their reasons.</li>
+        </ul>
+        <p>
+            Message text is retained for 30 days and then deleted automatically. It is accessible only to server
+            moderators, is encrypted at rest, and is not used for any other purpose. To request deletion of your data
+            earlier, contact <a href="mailto:support@poketwo.net">support@poketwo.net</a>.
         </p>
         <h4>Third Parties</h4>
         <p>
