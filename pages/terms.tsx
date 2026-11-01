@@ -2,7 +2,7 @@ const Banner = () => (
     <div className="section">
         <div className="container has-text-centered">
             <p className="title is-2">Terms of Service</p>
-            <p className="subtitle">Effective Date: October 20, 2025</p>
+            <p className="subtitle">Effective Date: November 1, 2026</p>
         </div>
     </div>
 );
@@ -10,6 +10,10 @@ const Banner = () => (
 const Content = () => (
     <div className="content">
         <h2>Recent Changes</h2>
+        <p>
+            <strong>November 1, 2026:</strong> Added prohibition on using VPNs, proxies, or alternate accounts to evade
+            a suspension or restriction.
+        </p>
         <p>
             <strong>October 20, 2025:</strong> Added prohibition on{" "}
             <a href="#:~:text=Additionally%2C%20you%20shall%20not%20host,compensation%20or%20eligibility">compensated invite events</a> where Virtual
@@ -65,8 +69,9 @@ const Content = () => (
             <li>involves the development, distribution, or use of unacceptable software programs (as listed below);</li>
             <li>
                 involves the unapproved exchange of Virtual Currency or Virtual Goods (as defined below) outside the
-                Services; or
+                Services;
             </li>
+            <li>uses VPNs, proxies, or alternate accounts to evade a suspension or restriction; or</li>
             <li>condones, benefits from, or is otherwise in connection with any person who violates these Terms.</li>
         </ul>
         <p>

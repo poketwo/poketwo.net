@@ -2,7 +2,7 @@ const Banner = () => (
     <div className="section">
         <div className="container has-text-centered">
             <p className="title is-2">Privacy Policy</p>
-            <p className="subtitle">Effective Date: October 21, 2026</p>
+            <p className="subtitle">Effective Date: November 1, 2026</p>
         </div>
     </div>
 );
@@ -50,6 +50,30 @@ const Content = () => (
             Message text is retained for 30 days and then deleted automatically. It is accessible only to server
             moderators, is encrypted at rest, and is not used for any other purpose. To request deletion of your data
             earlier, contact <a href="mailto:support@poketwo.net">support@poketwo.net</a>.
+        </p>
+        <h2 id="verification">Human Verification</h2>
+        <p>
+            Pokétwo may ask you to complete a captcha at verify.poketwo.net. To prevent automated play, abuse, and the
+            use of multiple accounts to get around restrictions, when you complete it we store:
+        </p>
+        <ul>
+            <li>
+                a one-way, keyed hash of your IP address and of the network range it belongs to (the IP address itself
+                is not stored);
+            </li>
+            <li>the identifier of your network provider (autonomous system number); and</li>
+            <li>the Discord account that completed the captcha, and when.</li>
+        </ul>
+        <p>
+            This information is used only to detect automated or linked accounts and to restrict them. It is accessible
+            only to Pokétwo administrators. It is deleted automatically 90 days after your last verification, unless
+            your account is suspended, in which case it is kept for as long as the suspension remains in place. If a
+            network has been used for abuse, we may suspend accounts while they are verified from that network; the
+            hashed identifier of such a network is kept for as long as the restriction remains in place. Deleted data
+            may remain in backups for up to 7 days. The captcha is provided by hCaptcha, and the site is hosted by
+            Vercel and served through Cloudflare, who process your IP address under their own privacy policies. To
+            request access to or deletion of this data, contact{" "}
+            <a href="mailto:support@poketwo.net">support@poketwo.net</a>.
         </p>
         <h4>Third Parties</h4>
         <p>
