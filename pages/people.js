@@ -63,102 +63,57 @@ const Team = ({ people }) => {
 
 export default Team;
 
-export async function getStaticProps(context) {
+// Written hourly by guiduck's StaffRoster cog from live Discord data.
+const STAFF_API_URL = "https://admin.poketwo.net/api/staff";
+const REVALIDATE_SECONDS = 3600;
+
+// Discord role ID -> title, most senior first. People are grouped into sections by their top title.
+const ROLE_TITLES = {
+    "974942298301431809": "Admin",
+    "718006431231508481": "Admin",
+    "1472581910894215268": "Advisor",
+    "1150516638236553319": "Development Lead",
+    "1150516551368314900": "Event Team Lead",
+    "1150517456230694932": "Human Resources Lead",
+    "1483962728866644109": "Manager",
+    "1483963509275623444": "Manager",
+    "1196632752523579423": "Developer",
+    "1120600250474827856": "Developer",
+    "974937010462683166": "Moderator",
+    "724879492622843944": "Moderator",
+    "930776361205919804": "Event Team",
+};
+
+const TITLE_ORDER = [...new Set(Object.values(ROLE_TITLES))];
+
+const titlesOf = member => {
+    const titles = new Set(member.roles.map(role => ROLE_TITLES[role.id]).filter(Boolean));
+    return TITLE_ORDER.filter(title => titles.has(title));
+};
+
+const groupBySection = members => {
+    const sections = TITLE_ORDER.map(() => []);
+    for (const member of members) {
+        const titles = titlesOf(member);
+        if (titles.length === 0) continue;
+        sections[TITLE_ORDER.indexOf(titles[0])].push({
+            name: member.name,
+            secondary: titles.join("\n"),
+            image: member.avatar,
+        });
+    }
+    return sections.filter(section => section.length > 0);
+};
+
+export async function getStaticProps() {
+    const response = await fetch(STAFF_API_URL);
+    if (!response.ok) {
+        // Throwing keeps the last successfully built page during background revalidation.
+        throw new Error(`Staff roster request failed with status ${response.status}`);
+    }
+    const { members } = await response.json();
     return {
-        props: {
-            people: [
-                [
-                    {
-                        name: "oliver",
-                        image: "https://cdn.discordapp.com/avatars/398686833153933313/b785ad852db5f4eeceaee7c23740f849.png?size=1024",
-                        secondary: "Admin\nDevelopment Lead",
-                    },
-                ],
-                [
-                    {
-                        name: "foreboding",
-                        image: "https://cdn.discordapp.com/avatars/334155028170407949/f4f7f89f1163baa04ba11c3e6371888f.png?size=1024",
-                        secondary: "Admin\nDeveloper",
-                    },
-                    {
-                        name: "witherr.",
-                        image: "https://cdn.discordapp.com/avatars/267550284979503104/e9cceaeb70ca9df3ef9899535439de98.png?size=1024",
-                        secondary: "Admin\nDeveloper",
-                    },
-                ],
-                [
-                    {
-                        name: "tazzy989",
-                        image: "https://cdn.discordapp.com/avatars/1042169206692651038/ec2e13a27d230f8035606ab0c712deb1.png?size=1024",
-                        secondary: "Admin\nModerator",
-                    },
-                ],
-                [
-                    {
-                        name: "anoea",
-                        image: "https://cdn.discordapp.com/avatars/285861483412193280/684987d47b8a64c2e7b2dd6ad1712d80.png?size=1024",
-                        secondary: "Event Team Lead\nModerator",
-                    },
-                ],
-                [
-                    {
-                        name: "varmonke",
-                        image: "https://cdn.discordapp.com/avatars/857103603130302514/6b34a23c82e4f49dcce2500d0408dc2a.png?size=1024",
-                        secondary: "Developer",
-                    },
-                ],
-                [
-                    {
-                        name: "frankmyocean",
-                        image: "https://cdn.discordapp.com/avatars/546492524366266369/5a1f4e905b7351709b96c6c999191618.png?size=1024",
-                        secondary: "Moderator\nEvent Team",
-                    },
-                    {
-                        name: "bren.__.",
-                        image: "https://cdn.discordapp.com/avatars/336148113465278464/bc0adab136a4db602dc3721e87da9ec6.png?size=1024",
-                        secondary: "Moderator\nEvent Team",
-                    },
-                ],
-                [
-                    {
-                        name: "djlo",
-                        image: "https://cdn.discordapp.com/avatars/1069709648598401145/5f72289ced453f53291a08549201965d.png?size=1024",
-                        secondary: "Moderator",
-                    },
-                    {
-                        name: "mr_rio",
-                        image: "https://cdn.discordapp.com/avatars/720010802614239252/ea378abc63a8db617665b8ab49fef2ac.png?size=1024",
-                        secondary: "Moderator",
-                    },
-                    {
-                        name: "zoro_tatsuya",
-                        image: "https://cdn.discordapp.com/avatars/710045949397041205/87cb09110e596dfd6e3a79be500317a5.png?size=1024",
-                        secondary: "Moderator",
-                    },
-                    {
-                        name: "tokohyo",
-                        image: "https://cdn.discordapp.com/avatars/1177693947481559090/44248f56ccb46bda4cb700cf6119876c.png?size=1024",
-                        secondary: "Moderator",
-                    },
-                ],
-                [
-                    {
-                        name: "krisppykreme",
-                        image: "https://cdn.discordapp.com/avatars/182301129231695872/8dd082c7fbdbfb9b231b834f28d2dfa0.png?size=1024",
-                        secondary: "Event Team",
-                    },
-                    {
-                        name: "somebluepigeon",
-                        image: "https://cdn.discordapp.com/avatars/711892049842012190/6b3396bc3a0523df8a899c5b4f178509.png?size=1024",
-                        secondary: "Event Team",
-                    },
-                    {
-                        name: "qydv",
-                        image: "https://cdn.discordapp.com/guilds/716390832034414685/users/745825974880436294/avatars/70ed47efb07e8b1912b6f8bbff01d0e9.png?size=1024",
-                        secondary: "Event Team",
-                    },
-                ],
-            ],
-        },
+        props: { people: groupBySection(members) },
+        revalidate: REVALIDATE_SECONDS,
     };
 }
