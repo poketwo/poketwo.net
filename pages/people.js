@@ -68,26 +68,26 @@ const STAFF_API_URL = "https://admin.poketwo.net/api/staff";
 const REVALIDATE_SECONDS = 3600;
 
 // Discord role ID -> title, most senior first. People are grouped into sections by their top title.
-const ROLE_TITLES = {
-    "974942298301431809": "Admin",
-    "718006431231508481": "Admin",
-    "1472581910894215268": "Advisor",
-    "1150516638236553319": "Development Lead",
-    "1150516551368314900": "Event Team Lead",
-    "1150517456230694932": "Human Resources Lead",
-    "1483962728866644109": "Manager",
-    "1483963509275623444": "Manager",
-    "1196632752523579423": "Developer",
-    "1120600250474827856": "Developer",
-    "974937010462683166": "Moderator",
-    "724879492622843944": "Moderator",
-    "930776361205919804": "Event Team",
-};
+const ROLE_TITLES = new Map([
+    ["974942298301431809", "Admin"],
+    ["718006431231508481", "Admin"],
+    ["1472581910894215268", "Advisor"],
+    ["1150516638236553319", "Development Lead"],
+    ["1150516551368314900", "Event Team Lead"],
+    ["1150517456230694932", "Human Resources Lead"],
+    ["1483962728866644109", "Manager"],
+    ["1483963509275623444", "Manager"],
+    ["1196632752523579423", "Developer"],
+    ["1120600250474827856", "Developer"],
+    ["974937010462683166", "Moderator"],
+    ["724879492622843944", "Moderator"],
+    ["930776361205919804", "Event Team"],
+]);
 
-const TITLE_ORDER = [...new Set(Object.values(ROLE_TITLES))];
+const TITLE_ORDER = [...new Set(ROLE_TITLES.values())];
 
 const titlesOf = member => {
-    const titles = new Set(member.roles.map(role => ROLE_TITLES[role.id]).filter(Boolean));
+    const titles = new Set(member.roles.map(role => ROLE_TITLES.get(role.id)).filter(Boolean));
     return TITLE_ORDER.filter(title => titles.has(title));
 };
 
