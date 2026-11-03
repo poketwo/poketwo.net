@@ -77,6 +77,7 @@ const ROLE_TITLES = new Map([
     ["1150517456230694932", "Human Resources Lead"],
     ["1483962728866644109", "Manager"],
     ["1483963509275623444", "Manager"],
+    ["1556701034921992322", "Trial Manager"],
     ["1196632752523579423", "Developer"],
     ["1120600250474827856", "Developer"],
     ["974937010462683166", "Moderator"],
