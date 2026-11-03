@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Stripe from "stripe";
 import { fetchPoketwoAccount, PoketwoAccount } from "../helpers/db";
+import { avatarUrl, formatTag } from "../helpers/discord";
 import { ironSessionOptions } from "../helpers/session";
 import { stripe } from "../helpers/stripe";
 import styles from "../styles/store.module.scss";
@@ -33,15 +34,6 @@ type AuthenticationProps = {
 
 const Authentication = ({ user }: AuthenticationProps) => {
     const authenticated = user !== null;
-    let file_ext, avatar_url;
-    if (authenticated) {
-        if (user.avatar) {
-            file_ext = user.avatar.startsWith("a_") ? "gif" : "png";
-            avatar_url = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${file_ext}`;
-        } else {
-            avatar_url = `https://cdn.discordapp.com/embed/avatars/${Number(user.discriminator) % 5}.png`;
-        }
-    }
     return (
         <div className="section">
             <div className="container has-text-centered">
@@ -55,11 +47,13 @@ const Authentication = ({ user }: AuthenticationProps) => {
                         <div className="column is-narrow">
                             <div className="box px-6">
                                 <figure className="image is-96x96 mb-5 mx-auto">
-                                    <img className="profile-circle is-rounded" src={avatar_url} alt="Profile Picture" />
+                                    <img
+                                        className="profile-circle is-rounded"
+                                        src={avatarUrl(user)}
+                                        alt="Profile Picture"
+                                    />
                                 </figure>
-                                <p className="title is-4">
-                                    {user.username}#{user.discriminator}
-                                </p>
+                                <p className="title is-4">{formatTag(user)}</p>
                                 <p className="subtitle is-5">{user.email}</p>
                             </div>
                         </div>
@@ -104,14 +98,6 @@ type ConfirmModalProps = {
 };
 
 const ConfirmModal = ({ user, account, item, onConfirm, onCancel }: ConfirmModalProps) => {
-    let avatar_url;
-    if (user.avatar) {
-        const file_ext = user.avatar.startsWith("a_") ? "gif" : "png";
-        avatar_url = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${file_ext}`;
-    } else {
-        avatar_url = `https://cdn.discordapp.com/embed/avatars/${Number(user.discriminator) % 5}.png`;
-    }
-
     return (
         <div className="modal is-active">
             <div className="modal-background" onClick={onCancel} />
@@ -127,11 +113,9 @@ const ConfirmModal = ({ user, account, item, onConfirm, onCancel }: ConfirmModal
                     </p>
                     <div className="box">
                         <figure className="image is-64x64 mb-3 mx-auto">
-                            <img className="is-rounded" src={avatar_url} alt="Profile Picture" />
+                            <img className="is-rounded" src={avatarUrl(user)} alt="Profile Picture" />
                         </figure>
-                        <p className="title is-5">
-                            {user.username}#{user.discriminator}
-                        </p>
+                        <p className="title is-5">{formatTag(user)}</p>
                         <p className="subtitle is-6">{user.email}</p>
                         <div className="columns is-centered mt-2">
                             <div className="column is-narrow">
