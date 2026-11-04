@@ -2,7 +2,7 @@ const Banner = () => (
     <div className="section">
         <div className="container has-text-centered">
             <p className="title is-2">Terms of Service</p>
-            <p className="subtitle">Effective Date: October 20, 2025</p>
+            <p className="subtitle">Effective Date: August 25, 2026</p>
         </div>
     </div>
 );
@@ -10,6 +10,10 @@ const Banner = () => (
 const Content = () => (
     <div className="content">
         <h2>Recent Changes</h2>
+        <p>
+            <strong>August 25, 2026:</strong> Added prohibition on gambling using Virtual Currency or Virtual
+            Goods.
+        </p>
         <p>
             <strong>October 20, 2025:</strong> Added prohibition on{" "}
             <a href="#:~:text=Additionally%2C%20you%20shall%20not%20host,compensation%20or%20eligibility">compensated invite events</a> where Virtual
@@ -145,6 +149,12 @@ const Content = () => (
             </li>
             <li>otherwise using server invite activity as a basis for compensation or eligibility.</li>
         </ul>
+        <p>
+            Additionally, you shall not host, operate, participate in, or advertise any form of gambling involving
+            Virtual Currency or Virtual Goods — that is, any game, event, or activity in which Virtual Currency or
+            Virtual Goods are wagered on an outcome determined in whole or in part by chance, including, but not
+            limited to, lotteries, raffles, coin flips, dice games, casinos, and betting pools.
+        </p>
         <p>
             A violation of any of the foregoing may result in suspension of your access to the Services. The Company
             retains the right to modify, manage, control and/or eliminate Virtual Currency and/or Virtual Goods at its
